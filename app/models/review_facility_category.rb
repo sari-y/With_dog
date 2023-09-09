@@ -1,0 +1,2 @@
+class ReviewFacilityCategory < ApplicationRecord
+end
