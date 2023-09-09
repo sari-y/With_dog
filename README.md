@@ -1,24 +1,37 @@
-# README
+# With dog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+### サイトテーマ
+愛犬家のための愛犬のことを第一に考えたおでかけレビューサイトです。
 
-* Ruby version
+### テーマを選んだ理由
+私は旅行が好きでいろんなところに出かけます。<br>
+また、犬も好きで飼っており一緒に旅行に行こうと計画をしていたときに<br>
+愛犬と泊れる宿やおでかけ先のサイトはあるものの、いざ気になる行き先を<br>
+見つけても遠いことが理由で行けず、行き先を探すことに苦労しました。<br>
+私が愛犬とのお出かけで一番気にしていたことは愛犬に負担がかかることでした。<br>
+距離や時間が懸念点となった為、移動距離や移動時間から検索できるようなサイトを作り<br>
+愛犬とのお出かけをより楽しんでほしいという思いからこのテーマにしました。<br>
 
-* System dependencies
+### ターゲットユーザー
+* お出かけ好きな愛犬家
+* 実際にその施設を利用した愛犬家の声を聞きたい人
 
-* Configuration
+### 主な利用シーン
+* 愛犬を連れてのお出かけ場所を探している時
+* 愛犬を連れての旅行を計画している時
 
-* Database creation
+## 設計書
+後ほど作成予定
 
-* Database initialization
 
-* How to run the test suite
+## 開発環境
+* OS：Linux(CentOS)
+* 言語：HTML,CSS,JavaScript,Ruby,SQL
+* フレームワーク：Ruby on Rails
+* JSライブラリ：jQuery
+* IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
