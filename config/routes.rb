@@ -1,32 +1,7 @@
 Rails.application.routes.draw do
 
 
-  namespace :admin do
-    get 'facility_categories/index'
-  end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-  end
-  namespace :admin do
-    get 'reviews/index'
-    get 'reviews/show'
-  end
-  namespace :public do
-    get 'reviews/new'
-    get 'reviews/index'
-    get 'reviews/show'
-    get 'reviews/edit'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/confirm'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+ 
  devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -36,6 +11,39 @@ Rails.application.routes.draw do
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+
+ scope module: :public do
+    get '/' => 'homes#top'
+    get '/about' => 'homes#about'
+    get 'users/my_page' => 'users#show'
+    get 'users/information/edit' => 'users#edit'
+    patch 'users/information' => 'users#update'
+    get 'users/confirm_withdraw' => 'users#confirm_withdraw'
+    delete 'users/withdraw' => 'users#withdraw'
+
+
+
+    resources :reviews
+    resources :review_comments, only: [:create, :update, :destroy]
+    resources :review_favorites, only: [:create, :destroy]
+
+
+  end
+
+
+
+  namespace :admin do
+
+    resources :reviews, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :show, :destroy]
+    resources :facility_categories, only: [:index, :create, :update, :destroy]
+    resources :review_comments, only: [:destroy]
+
+  end
+
+
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
