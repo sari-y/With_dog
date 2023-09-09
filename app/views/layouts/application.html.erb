@@ -1,18 +1,57 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WithDog</title>
+    <title>With dog</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <script src="https://kit.fontawesome.com/1a85cb0c49.js" crossorigin="anonymous"></script>
+
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <header class="mb-4 bg-light border-bottom border-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark p-2 ">
+        <div class="container">
+          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse show" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <%= render 'layouts/user_signed_in' %>
+              <% elsif admin_signed_in? %>
+                <%= render 'layouts/admin_signed_in' %>
+              <% else %>
+                <%= render 'layouts/sign_out' %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-10 col-lg-10 mx-auto">
+          </div>
+        </div>
+      </div>
+    </header>
     <%= yield %>
+    <footer class="bg-light border-top border-dark pt-5 pb-5 mt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-3 mx-auto">
+            <h3>With dog</h3>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
+
