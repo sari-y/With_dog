@@ -1,0 +1,2 @@
+class FacilityCategory < ApplicationRecord
+end
