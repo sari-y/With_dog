@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :review_comments
   has_many :reviews_favorites
+  
+  has_one_attached :profile_image
+  
 end
