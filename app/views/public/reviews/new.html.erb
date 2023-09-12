@@ -1,2 +1,127 @@
-<h1>Public::Reviews#new</h1>
-<p>Find me in app/views/public/reviews/new.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+
+      <h2>会員情報</h2>
+
+      <%= render 'public/users/info', user: current_user %>
+
+
+      </div>
+</div>
+</div>
+<br>
+<br>
+<div class='container px-7 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-12'>
+
+
+        <h2>新規投稿</h2>
+        <% if @review.errors.present? %>
+          <% @review.errors.full_messages.each do |msg| %>
+            <%= msg %>
+          <% end %>
+        <% end %>
+
+        <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
+
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :facility_name, "施設名" %>
+          </div>
+          <div class="col-md-8 mb-3">
+            <div class="field">
+              <%= f.text_field :facility_name, placeholder: "〇〇公園" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :text, "レビュー" %>
+          </div>
+          <div class="col-md-8 mb-3">
+            <div class="field">
+              <%= f.text_field :text %>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-4">
+            <%#= f.label :rating, "評価" %>
+          </div>
+          <div class="col-md-8 mb-3">
+            <div class="field">
+              <%#= f.text_field :rating %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%#= f.label :review_facility_category, "カテゴリー" %>
+          </div>
+          <div class="col-md-8 mb-3">
+            <div class="field">
+              <%#= f.text_field :review_facility_category %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :post_code, "郵便番号" %>
+          </div>
+          <div class="col-md-8 mb-3">
+            <div class="field">
+              <%= f.text_field :post_code, placeholder: "000-0000" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :address, "住所" %>
+          </div>
+          <div class="col-md-8 mb-3">
+            <div class="field">
+              <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :image, "写真" %>
+          </div>
+          <div class="col-md-8 mb-3">
+            <div class="field">
+        <%= f.file_field :image, accept: "image/*" %>
+        </div>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-md-8"></div>
+            <div class="col-md-4 mb-3 mt-3">
+              <%= f.submit "新規登録", class: "btn btn-success w-25" %>
+            </div>
+        </div>
+
+      <% end %>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+<br>
+

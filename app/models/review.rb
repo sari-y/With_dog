@@ -3,4 +3,14 @@ class Review < ApplicationRecord
   has_many :review_favorites
   has_many :review_facility_categories
   belongs_to :user
+
+  has_one_attached :image
+
+  validates :text, presence: true
+
+
+  def favorited_by?(user)
+   favorites.exists?(user_id: user.id)
+  end
+  
 end
