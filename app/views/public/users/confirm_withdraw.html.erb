@@ -1,0 +1,25 @@
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h3 class="text-center">本当に退会しますか？</h3>
+      <br>
+      <br>
+      <p class="text-center">退会すると、会員登録情報や<br>
+                             これまでの全ての情報が閲覧できなくなります。<br>
+                            退会する場合は、「退会する」をクリックしてください。</p>
+      <br>
+      <br>
+      <div class="text-center">
+        <%= link_to "退会しない", users_my_page_path, class: "btn btn-info w-25 mr-3" %>
+        <%= link_to "退会する", users_withdraw_path, method: :patch, class: "btn btn-danger w-25" %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
