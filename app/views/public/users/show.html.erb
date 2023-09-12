@@ -5,6 +5,7 @@
       <h2>会員情報</h2>
 
       <%= render 'info', user: current_user %>
+      </div>
 
       <div class='col-md-8 offset-md-1'>
         <h2>レビュー</h2>
@@ -28,11 +29,11 @@
                     <td><%= review.facility_name %></td>
                     <td id="favorite_buttons_<%= review.id %>">
                       <% if review.favorited_by?(current_user) %>
-                        <p><%= link_to review_favorite_path(review), method: :delete, remote: true do %>
+                        <p><%= link_to review_review_favorites_path(review), method: :delete do %>
                         ♥<%= review.review_favorites.count %>
                         <% end %></p>
                       <% else %>
-                        <p><%= link_to book_favorites_path(review), method: :post, remote: true do %>
+                        <p><%= link_to review_review_favorites_path(review), method: :post do %>
                         ♡<%= review.review_favorites.count %>
                        <% end %></p>
                       <% end %>
@@ -41,11 +42,13 @@
                       コメント数:<%= review.review_comments.count %>
                     </td>
                   </tr>
+                  <tr>
+                    <td><%= link_to "詳細", review_path(review), class: "btn btn-info" %></td>
+                    <td><%= link_to "編集", edit_review_path(review), class: "btn btn-info" %></td>
+                  </tr>
                 <% end %>
               </tbody>
           </table>
       </div>
-
-    </div>
   </div>
 </div>

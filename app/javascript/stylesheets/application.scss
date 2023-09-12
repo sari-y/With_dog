@@ -1,1 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=M+PLUS+1+Code&display=swap');
+
+body {
+  font-family: 'M PLUS 1 Code', cursive;
+}
+
+.logo {
+  font-family: 'Hachi Maru Pop', cursive;
+}

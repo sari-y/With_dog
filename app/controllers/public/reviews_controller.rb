@@ -1,4 +1,6 @@
+
 class Public::ReviewsController < ApplicationController
+  
   def new
     @review = Review.new
   end
@@ -12,10 +14,9 @@ class Public::ReviewsController < ApplicationController
     end
   end
 
-
-
-
   def index
+    @user = current_user
+    @reviews = @user.reviews 
   end
 
   def show
