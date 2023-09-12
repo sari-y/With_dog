@@ -6,7 +6,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :post_code, null: false
       t.string :address, null: false
       t.text :text, null: false
-      t.integer :rating, null: false
+      t.integer :rating
       t.timestamps
     end
   end

@@ -1,0 +1,23 @@
+<table class='table'>
+        <tr>
+          <% if user.profile_image.attached? %>
+            <%= image_tag user.profile_image(100,100) %>
+          <% else %>
+            <%= image_tag 'no_image', size: "100x100" %>
+          <% end %>
+        </tr>
+        <tr>
+	        <th>名前</th>
+	        <th><%= user.name %></th>
+        </tr>
+        <tr>
+	        <th>自己紹介</th>
+	        <th><%= user.introduction %></th>
+        </tr>
+      </table>
+
+      <div class='row'>
+        <%= link_to users_information_edit_path, class: "btn btn-outline-secondary btn-block" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
