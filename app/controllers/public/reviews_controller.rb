@@ -20,6 +20,9 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
+    @review = Review.find(params[:id])
+    @user = @review.user
+    @review_comment = ReviewComment.new
   end
 
   def edit
