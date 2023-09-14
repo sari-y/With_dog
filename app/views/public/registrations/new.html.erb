@@ -1,8 +1,9 @@
 <br>
 <br>
+<br>
 <div class="container">
   <div class="row">
-    <div class="col-12 mx-auto">
+    <div class="col-8 mx-auto">
 
       <div class="row">
         <div class="col-3">
@@ -16,55 +17,55 @@
       <br>
 
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="field">
             <%= f.label :name, "名前" %>
           </div>
         </div>
-        <div class="col-md-5 mb-4">
-          <%= f.text_field :name %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3">
-          <div class="field">
-            <%= f.label :email, "メールアドレス" %>
-          </div>
-        </div>
-        <div class="col-md-7 mb-4">
-          <%= f.email_field :email %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3">
-          <div class="field">
-            <%= f.label :password, "パスワード" %>
-          </div>
-        </div>
-        <div class="col-md-7 mb-4">
-          <%= f.password_field :password %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3">
-          <div class="field">
-            <%= f.label :password_confirmation,"(確認用)" %>
-          </div>
-        </div>
-        <div class="col-md-7 mb-4">
-          <%= f.password_field :password_confirmation %>
+        <div class="col-md-6 mb-4">
+          <%= f.text_field :name, class: "form-control" %>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-4">
+          <div class="field">
+            <%= f.label :email, "メールアドレス" %>
+          </div>
         </div>
-        <div class="col-md-7 mb-4">
+        <div class="col-md-6 mb-4">
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="field">
+            <%= f.label :password, "パスワード" %>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="field">
+            <%= f.label :password_confirmation,"(確認用)" %>
+          </div>
+        </div>
+        <div class="col-md-6 mb-5">
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4 mb-5">
           <div class="actions">
-            <%= f.submit "新規登録" %>
+            <%= f.submit "新規登録", class: "btn btn-info w-50" %>
           </div>
         </div>
       </div>

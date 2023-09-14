@@ -1,9 +1,14 @@
 <div class="container">
-  <h3>レビュー一覧</h3>
+   <div class="row">
+    <div class="col-8 mx-auto">
+      <br>
+      <br>
 
+  <h3>レビュー</h3>
+  <br>
   <div class="row">
     <% @reviews.each do |review| %>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="card">
           <% count=1 %>
           <% review.image.each do |image| %>
@@ -17,7 +22,10 @@
               <%= link_to review.facility_name, review_path(review) %>
             </h5>
             <div class="card-text">
-              <%= simple_format(review.text) %>
+              <%= truncate(review.text, :length => 20) %>
+            </div>
+            <div class="card-name">
+              <%#= link_to review.user.name, user_path(user) %>
             </div>
           </div>
           <div class="card-footer text-right">
@@ -42,4 +50,6 @@
       </div>
     <% end %>
   </div>
+</div>
+</div>
 </div>
