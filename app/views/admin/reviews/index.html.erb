@@ -1,2 +1,32 @@
-<h1>Admin::Reviews#index</h1>
-<p>Find me in app/views/admin/reviews/index.html.erb</p>
+<h3>レビュー一覧</h3>
+          <table class='table table-hover table-inverse'>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Opinion</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+              <tbody>
+                <% @reviews.each do |review| %>
+                  <tr>
+                    <td>
+                      <% count=1 %>
+                      <% review.image.each do |image| %>
+                        <% if count==1 %>
+                          <%= image_tag image.variant(resize: '100x100') if review.image.attached? %>
+                        <% end %>
+                        <% count+=1 %>
+                      <% end %>
+                    </td>
+                    <td><%= review.facility_name %></td>
+
+                  </tr>
+                  <tr>
+                    <td><%#= review.user.name %></td>
+                    <td><%= link_to "詳細", admin_review_path(review), class: "btn btn-info" %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
