@@ -5,13 +5,13 @@
       <h3>会員情報詳細</h3>
 
       <%= image_tag @user.get_profile_image %>
-      
+
       </div>
 
       <div class='col-md-8 offset-md-1'>
-        
+
         <%= link_to "削除", admin_user_path, method: :delete, class: "btn btn-success mr-5" %>
-        
+
           <div class="col-md-12">
           <table class="table table-borderless">
             <thead>
