@@ -15,8 +15,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @user = current_user
-    @reviews = @user.reviews 
+    @reviews = Review.all
   end
 
   def show
@@ -26,13 +25,27 @@ class Public::ReviewsController < ApplicationController
   end
 
   def edit
+     @review = Review.find(params[:id])
+    @user = @review.user
+  end
+  
+  
+  def update
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      flash[:success] = "レビューを更新しました。"
+      redirect_to review_path(@review)
+    else
+      flash[:error] = "レビューの更新に失敗しました。"
+      render :edit
+    end
   end
 
 
   private
 
   def review_params
-    params.require(:review).permit(:facility_name, :text, :post_code, :address, :image)
+    params.require(:review).permit(:facility_name, :text, :post_code, :address, image: [])
   end
 
 end

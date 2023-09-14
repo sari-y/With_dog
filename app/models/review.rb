@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   has_many :review_facility_categories
   belongs_to :user
 
-  has_one_attached :image
+  has_many_attached :image
 
   validates :text, presence: true
 

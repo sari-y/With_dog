@@ -5,10 +5,12 @@
     <% @reviews.each do |review| %>
       <div class="col-md-3">
         <div class="card">
-          <% if review.image.attached? %>
-            <%= image_tag review.image, class: "img-fluid", style: "width: 100%; height: 150px; object-fit: cover;" %>
-          <% else %>
-            <%= image_tag 'no_image.jpg', class: "img-fluid", style: "width: 100%; height: 150px; object-fit: cover;" %>
+          <% count=1 %>
+          <% review.image.each do |image| %>
+            <% if count==1 %>
+              <%= image_tag image.variant(resize: '300x300') if review.image.attached? %>
+            <% end %>
+            <% count+=1 %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title">
