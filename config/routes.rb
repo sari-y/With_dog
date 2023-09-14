@@ -27,9 +27,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
      resource :review_favorites, only: [:create, :destroy]
      resources :review_comments, only: [:create, :update, :destroy]
     end
-    
-    
-    
+
+
+
 
 
   end
