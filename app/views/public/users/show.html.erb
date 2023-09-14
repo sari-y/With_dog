@@ -21,11 +21,15 @@
               <tbody>
                 <% @reviews.each do |review| %>
                   <tr>
-                    <td><% if review.image.attached? %>
-                        <%= image_tag review.image, size: '50x50' %>
-                        <% else %>
-                        <%= image_tag 'no_image', size: "50x50" %>
-                        <% end %></td>
+                    <td>
+                      <% count=1 %>
+                      <% review.image.each do |image| %>
+                        <% if count==1 %>
+                          <%= image_tag image.variant(resize: '100x100') if review.image.attached? %>
+                        <% end %>
+                        <% count+=1 %>
+                      <% end %>
+                    </td>
                     <td><%= review.facility_name %></td>
                     <td id="favorite_buttons_<%= review.id %>">
                       <% if review.favorited_by?(current_user) %>

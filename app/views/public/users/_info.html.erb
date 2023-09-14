@@ -1,10 +1,6 @@
 <table class='table'>
         <tr>
-          <% if user.profile_image.attached? %>
-            <%= image_tag user.profile_image(100,100) %>
-          <% else %>
-            <%= image_tag 'no_image', size: "100x100" %>
-          <% end %>
+            <%= image_tag user.get_profile_image %>
         </tr>
         <tr>
 	        <th>名前</th>
