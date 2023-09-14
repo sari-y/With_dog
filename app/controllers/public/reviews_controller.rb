@@ -1,6 +1,6 @@
 
 class Public::ReviewsController < ApplicationController
-  
+
   def new
     @review = Review.new
   end
@@ -28,8 +28,8 @@ class Public::ReviewsController < ApplicationController
      @review = Review.find(params[:id])
     @user = @review.user
   end
-  
-  
+
+
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
