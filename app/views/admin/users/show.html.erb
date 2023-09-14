@@ -1,2 +1,40 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+
+      <h3>会員情報詳細</h3>
+
+      <%= image_tag @user.get_profile_image %>
+      
+      </div>
+
+      <div class='col-md-8 offset-md-1'>
+        
+        <%= link_to "削除", admin_user_path, method: :delete, class: "btn btn-success mr-5" %>
+        
+          <div class="col-md-12">
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <td style="width: 40%">会員ID</td>
+                <td style="width: 60%"><%= @user.id %></td>
+              </tr>
+              <tr>
+                <td  style="width: 40%">氏名</td>
+                <td  style="width: 60%"><%= @user.name %></td>
+              </tr>
+              <tr>
+                <td style="width: 40%">メールアドレス</td>
+                <td style="width: 60%"><%= @user.email %></td>
+              </tr>
+              <tr>
+                <td style="width: 40%">自己紹介文</td>
+                <td style="width: 60%"><%= @user.introduction %></td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>
+
