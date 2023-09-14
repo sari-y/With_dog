@@ -1,2 +1,43 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+    <br>
+    <br>
+    <div class="row">
+          <div class="col-2">
+            <h3>会員一覧</h3>
+          </div>
+        </div>
+    <br>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th style="height: 50px">会員ID</th>
+          <th style="height: 50px">プロフィール画像</th>
+          <th style="height: 50px">名前</th>
+          <th style="height: 50px">メールアドレス</th>
+          <th style="height: 50px"></th>
+        </tr>
+      </thead>
+
+      <% @users.each do |user| %>
+
+      <tbody>
+        <tr>
+          <td style="height: 60px"><%= user.id %></td>
+          <td style="height: 60px"><%= image_tag user.get_profile_image %></td>
+          <td style="height: 60px"><%= user.name %></td>
+          <td style="height: 60px"><%= user.email %></td>
+          <td style="height: 60px"><%= link_to "詳細", admin_user_path(user), class: "btn btn-sm btn-info" %></td>
+          
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    <br>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
