@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mx-auto">
+    <div class="col-md-10 mx-auto">
     <br>
     <br>
     <div class="row">
@@ -25,11 +25,11 @@
       <tbody>
         
         <tr>
-          <td style="height: 60px"><%= user.id %></td>
-          <td style="height: 60px"><%= image_tag user.get_profile_image %></td>
-          <td style="height: 60px"><%= user.name %></td>
-          <td style="height: 60px"><%= user.email %></td>
-          <td style="height: 60px"><%= link_to "詳細", admin_user_path(user), class: "btn btn-sm btn-info" %></td>
+          <td style="height: 60px; vertical-align: middle;"><%= user.id %></td>
+          <td style="height: 60px; vertical-align: middle;"><%= image_tag user.get_profile_image %></td>
+          <td style="height: 60px; vertical-align: middle;"><%= user.name %></td>
+          <td style="height: 60px; vertical-align: middle;"><%= user.email %></td>
+          <td style="height: 60px; vertical-align: middle;"><%= link_to "詳細", admin_user_path(user), class: "btn btn-sm btn-info" %></td>
 
         </tr>
       </tbody>

@@ -1,11 +1,11 @@
-
+<br>
 <br>
 <div class="container">
   <div class="row">
-    <div class="col-12 mx-auto">
+    <div class="col-8 mx-auto">
 
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-5">
           <h3>登録情報変更</h3>
         </div>
       </div>
@@ -18,9 +18,9 @@
             <div class="col-md-4">
               <%= f.label :name, "名前" %>
             </div>
-            <div class="col-md-8 mb-3">
+            <div class="col-md-6 mb-4">
               <div class="field">
-                <%= f.text_field :name %>
+                <%= f.text_field :name, class: "form-control" %>
               </div>
             </div>
           </div>
@@ -29,9 +29,9 @@
             <div class="col-md-4">
               <%= f.label :introduction, "自己紹介文" %>
             </div>
-            <div class="col-md-8 mb-3">
+            <div class="col-md-6 mb-4">
               <div class="field">
-                <%= f.text_field :introduction %>
+                <%= f.text_field :introduction, class: "form-control" %>
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
             <div class="col-md-4">
               <%= f.label :profile_image, "プロフィール画像" %>
             </div>
-            <div class="col-md-8 mb-3">
+            <div class="col-md-6 mb-5">
               <div class="field">
           <%= f.file_field :profile_image, accept: "image/*" %>
           </div>
@@ -50,12 +50,12 @@
 
           <div class="row">
             <div class="col-md-4"></div>
-              <div class="col-md-2">
-                <%= f.submit "更新", class: "btn btn-success" %>
+              <div class="col-md-4">
+                <%= f.submit "更新", class: "btn btn-success w-50" %>
               </div>
         <% end %>
               <div class="col-md-4">
-                <%= link_to "退会", users_confirm_withdraw_path, class: "btn btn-danger" %>
+                <%= link_to "退会", users_confirm_withdraw_path, class: "btn btn-danger w-50" %>
               </div>
             </div>
 

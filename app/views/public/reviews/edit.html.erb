@@ -1,8 +1,14 @@
-<div class="container">
+<br>
+<br>
+<div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <h3>投稿者</h3>
+
+      <h4>投稿者</h4>
+      <br>
+
       <%= render 'public/users/info', user: @user %>
+
     </div>
 
     <div class="col-md-8 offset-md-1">
@@ -13,17 +19,17 @@
           <div class="col-md-6">
             <h3>詳細情報編集</h3>
           </div>
-            <div class="col-md-6 mb-4 mt-4 d-flex flex-row-reverse">
+            <div class="col-md-4 mb-4 mt-4 d-flex flex-row-reverse">
               <%= f.submit "更新", class: "btn btn-success w-50" %>
             </div>
         </div>
 
 
           <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-4">
             <%= f.label :facility_name, "施設名" %>
           </div>
-          <div class="col-md-7 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
               <%= f.text_field :facility_name, class: "form-control" %>
             </div>
@@ -31,10 +37,10 @@
         </div>
 
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-4">
             <%= f.label :text, "レビュー" %>
           </div>
-          <div class="col-md-7 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
               <%= f.text_field :text, class: "form-control" %>
             </div>
@@ -46,7 +52,7 @@
           <div class="col-md-4">
             <%#= f.label :rating, "評価" %>
           </div>
-          <div class="col-md-8 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
               <%#= f.text_field :rating %>
             </div>
@@ -57,7 +63,7 @@
           <div class="col-md-4">
             <%#= f.label :review_facility_category, "カテゴリー" %>
           </div>
-          <div class="col-md-8 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
               <%#= f.text_field :review_facility_category %>
             </div>
@@ -65,10 +71,10 @@
         </div>
 
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-4">
             <%= f.label :post_code, "郵便番号" %>
           </div>
-          <div class="col-md-7 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
               <%= f.text_field :post_code, class: "form-control" %>
             </div>
@@ -76,10 +82,10 @@
         </div>
 
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-4">
             <%= f.label :address, "住所" %>
           </div>
-          <div class="col-md-7 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
               <%= f.text_field :address, class: "form-control" %>
             </div>
@@ -87,10 +93,10 @@
         </div>
 
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-4">
             <%= f.label :image, "写真" %>
           </div>
-          <div class="col-md-7 mb-3">
+          <div class="col-md-6 mb-5">
             <div class="field">
               <%= f.file_field :image, multiple: true, accept: "image/*" %>
             </div>

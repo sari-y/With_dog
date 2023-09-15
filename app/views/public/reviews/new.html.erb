@@ -1,8 +1,11 @@
+<br>
+<br>
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
 
-      <h2>会員情報</h2>
+      <h4>会員情報</h4>
+      <br>
 
       <%= render 'public/users/info', user: current_user %>
 
@@ -10,7 +13,9 @@
 
     <div class='col-md-8 offset-md-1'>
 
-      <h2>新規投稿</h2>
+      <h3>レビュー投稿</h3>
+      <br>
+      <br>
         <% if @review.errors.present? %>
           <% @review.errors.full_messages.each do |msg| %>
             <%= msg %>
@@ -23,9 +28,9 @@
           <div class="col-md-4">
             <%= f.label :facility_name, "施設名" %>
           </div>
-          <div class="col-md-8 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
-              <%= f.text_field :facility_name, placeholder: "〇〇公園" %>
+              <%= f.text_field :facility_name, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -34,9 +39,9 @@
           <div class="col-md-4">
             <%= f.label :text, "レビュー" %>
           </div>
-          <div class="col-md-8 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
-              <%= f.text_field :text %>
+              <%= f.text_field :text, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -46,9 +51,9 @@
           <div class="col-md-4">
             <%#= f.label :rating, "評価" %>
           </div>
-          <div class="col-md-8 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
-              <%#= f.text_field :rating %>
+              <%#= f.text_field :rating, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -57,9 +62,9 @@
           <div class="col-md-4">
             <%#= f.label :review_facility_category, "カテゴリー" %>
           </div>
-          <div class="col-md-8 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
-              <%#= f.text_field :review_facility_category %>
+              <%#= f.text_field :review_facility_category, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -68,9 +73,9 @@
           <div class="col-md-4">
             <%= f.label :post_code, "郵便番号" %>
           </div>
-          <div class="col-md-8 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
-              <%= f.text_field :post_code, placeholder: "000-0000" %>
+              <%= f.text_field :post_code, class: "form-control", placeholder: "000-0000" %>
             </div>
           </div>
         </div>
@@ -79,9 +84,9 @@
           <div class="col-md-4">
             <%= f.label :address, "住所" %>
           </div>
-          <div class="col-md-8 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="field">
-              <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
+              <%= f.text_field :address, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -90,7 +95,7 @@
           <div class="col-md-4">
             <%= f.label :image, "写真" %>
           </div>
-          <div class="col-md-8 mb-3">
+          <div class="col-md-6 mb-5">
             <div class="field">
               <%= f.file_field :image, multiple: true, accept: "image/*" %>
             </div>
@@ -98,16 +103,18 @@
         </div>
 
         <div class="row">
-          <div class="col-md-6"></div>
-            <div class="col-md-6 mb-4 mt-4">
-              <%= f.submit "新規登録", class: "btn btn-success w-25" %>
+          <div class="col-md-8"></div>
+            <div class="col-md-4 mb-5">
+              <div class="actions">
+              <%= f.submit "新規登録", class: "btn btn-info w-50" %>
             </div>
         </div>
+        </div>
+
 
       <% end %>
 
     </div>
   </div>
 </div>
-
 

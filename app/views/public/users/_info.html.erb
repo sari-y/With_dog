@@ -1,13 +1,17 @@
-<table class='table'>
+<table class="table table-borderless">
         <tr>
             <%= image_tag user.get_profile_image %>
+        </tr>
+        <tr>
+          <th></th>
+          <th></th>
         </tr>
         <tr>
 	        <th>名前</th>
 	        <th><%= user.name %></th>
         </tr>
         <tr>
-	        <th>自己紹介</th>
+	        <th>自己<br>紹介</th>
 	        <th><%= user.introduction %></th>
         </tr>
       </table>
