@@ -1,2 +1,69 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="main-container">
+  <h1>With dog</h1>
+  <p>
+    愛犬とのお出かけを今よりもっと楽しんでほしい。<br>
+    そんな思いから作られた愛犬家のための<br>
+    お出かけレビューサイトです。
+  </p>
+</div>
+
+
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <br>
+      <br>
+      </div>
+
+
+      <div class='col-md-7 offset-md-1'>
+
+<h3>新着レビュー</h3>
+  <br>
+  <div class="row">
+    <% @reviews.each do |review| %>
+      <div class="col-md-4">
+        <div class="card">
+          <% count=1 %>
+          <% review.image.each do |image| %>
+            <% if count==1 %>
+              <%= image_tag image.variant(resize: '300x300') if review.image.attached? %>
+            <% end %>
+            <% count+=1 %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to review.facility_name, review_path(review) %>
+            </h5>
+            <div class="card-text">
+              <%= truncate(review.text, :length => 18) %>
+            </div>
+            <div class="card-name">
+              <%#= link_to review.user.name, user_path(user) %>
+            </div>
+          </div>
+          <div class="card-footer text-right">
+            <% if user_signed_in? %>
+              <div>
+                <% if review.favorited_by?(current_user) %>
+                  <%= link_to review_review_favorites_path(review), method: :delete do %>
+                    ♥<%= review.review_favorites.count %>
+                  <% end %>
+                <% else %>
+                  <%= link_to review_review_favorites_path(review), method: :post do %>
+                    ♡<%= review.review_favorites.count %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+            <small class="text-black-50">
+              コメント数:<%= review.review_comments.count %>
+            </small>
+          </div>
+        </div>
+        </div>
+    <% end %>
+    </div>
+    </div>
+    </div>
+    </div>

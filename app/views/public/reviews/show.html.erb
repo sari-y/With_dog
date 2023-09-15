@@ -1,34 +1,46 @@
-<div class="container">
+<br>
+<br>
+<div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <h3>投稿者</h3>
+
+      <h4>投稿者</h4>
+      <br>
+
       <%= render 'public/users/info', user: @user %>
+
     </div>
 
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-7 offset-md-1">
+
+      <div class="row">
+          <div class="col-md-6">
       <h3>詳細情報</h3>
-      <%= link_to "編集", edit_review_path, class: "btn btn-success w-20" %>
+      </div>
+      <div class="col-md-12 mb-4 d-flex flex-row-reverse">
+      <%= link_to "編集", edit_review_path, class: "btn btn-success w-25" %>
+      </div>
+      </div>
 
-
-      <table class="table">
+      <table class="table" style="height: 300px;">
         <tr>
-          <td style="width: 30%">施設名</td>
-          <td style="width: 70%"><%= @review.facility_name %></td>
+          <td style="width: 30%; vertical-align: middle;">施設名</td>
+          <td style="width: 70%; vertical-align: middle;"><%= @review.facility_name %></td>
         </tr>
         <tr>
-          <td style="width: 30%">レビュー</td>
-          <td style="width: 70%"><%= @review.text %></td>
+          <td style="width: 30%; vertical-align: middle;">レビュー</td>
+          <td style="width: 70%; vertical-align: middle;"><%= @review.text %></td>
         </tr>
         <tr>
-          <td style="width: 30%">郵便番号</td>
-          <td style="width: 70%"><%= @review.post_code %></td>
+          <td style="width: 30%; vertical-align: middle;">郵便番号</td>
+          <td style="width: 70%; vertical-align: middle;"><%= @review.post_code %></td>
         </tr>
         <tr>
-          <td style="width: 30%">住所</td>
-          <td style="width: 70%"><%= @review.address %></td>
+          <td style="width: 30%; vertical-align: middle;">住所</td>
+          <td style="width: 70%; vertical-align: middle;"><%= @review.address %></td>
         </tr>
         <tr>
-          <td style="width: 30%">写真</td>
+          <td style="width: 30%; vertical-align: middle;">写真</td>
           <td style="width: 70%">
 
           </td>
@@ -36,7 +48,7 @@
       </table>
       <div class="d-flex flex-wrap">
         <% @review.image.each do |image| %>
-          <%= image_tag image.variant(resize: '240x240') if @review.image.attached? %>
+          <%= image_tag image.variant(resize: '300x300') if @review.image.attached? %>
         <% end %>
       </div>
 

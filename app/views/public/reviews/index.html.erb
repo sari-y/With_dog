@@ -1,14 +1,14 @@
 <div class="container">
    <div class="row">
-    <div class="col-8 mx-auto">
+    <div class="col-10 mx-auto">
       <br>
       <br>
 
-  <h3>レビュー</h3>
+  <h3>レビュー一覧</h3>
   <br>
   <div class="row">
     <% @reviews.each do |review| %>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="card">
           <% count=1 %>
           <% review.image.each do |image| %>
