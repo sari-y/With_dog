@@ -1,40 +1,54 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-3'>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
 
-      <h3>会員情報詳細</h3>
+      <h4>会員情報詳細</h4>
 
-      <%= image_tag @user.get_profile_image %>
+        <div class='container px-5 px-sm-0'>
+          <div class='row'>
+            <div class='col-md-3'>
 
-      </div>
+            <br>
+            <br>
 
-      <div class='col-md-8 offset-md-1'>
+              <%= image_tag @user.get_profile_image %>
+            </div>
 
-        <%= link_to "削除", admin_user_path, method: :delete, class: "btn btn-success mr-5" %>
+            <div class='col-md-8'>
+            <br>
+              <div class="row">
+                <div class="col-md-11 mb-4 d-flex flex-row-reverse">
+                  <%= link_to "削除", admin_user_path, method: :delete, class: "btn btn-danger w-25" %>
+                </div>
+              </div>
 
-          <div class="col-md-12">
-          <table class="table table-borderless">
-            <thead>
-              <tr>
-                <td style="width: 40%">会員ID</td>
-                <td style="width: 60%"><%= @user.id %></td>
-              </tr>
-              <tr>
-                <td  style="width: 40%">氏名</td>
-                <td  style="width: 60%"><%= @user.name %></td>
-              </tr>
-              <tr>
-                <td style="width: 40%">メールアドレス</td>
-                <td style="width: 60%"><%= @user.email %></td>
-              </tr>
-              <tr>
-                <td style="width: 40%">自己紹介文</td>
-                <td style="width: 60%"><%= @user.introduction %></td>
-              </tr>
-            </thead>
-          </table>
+              <table class="table" style="height: 300px;">
+                <thead>
+                  <tr>
+                    <td style="width: 40%; vertical-align: middle;">会員ID</td>
+                    <td style="width: 60%; vertical-align: middle;"><%= @user.id %></td>
+                  </tr>
+                  <tr>
+                    <td  style="width: 40%; vertical-align: middle;">氏名</td>
+                    <td  style="width: 60%; vertical-align: middle;"><%= @user.name %></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 40%; vertical-align: middle;">メールアドレス</td>
+                    <td style="width: 60%; vertical-align: middle;"><%= @user.email %></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 40%; vertical-align: middle;">自己紹介文</td>
+                    <td style="width: 60%; vertical-align: middle;"><%= @user.introduction %></td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
   </div>
-</div>
-
+<br>
+<br>

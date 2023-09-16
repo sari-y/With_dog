@@ -4,10 +4,10 @@
     <br>
     <br>
     <div class="row">
-          <div class="col-3">
-            <h4>会員一覧</h4>
-          </div>
-        </div>
+      <div class="col-3">
+        <h4>会員一覧</h4>
+      </div>
+    </div>
     <br>
     <table class="table">
       <thead class="thead-light">
@@ -21,16 +21,13 @@
       </thead>
 
       <% @users.each do |user| %>
-
       <tbody>
-        
         <tr>
           <td style="height: 60px; vertical-align: middle;"><%= user.id %></td>
           <td style="height: 60px; vertical-align: middle;"><%= image_tag user.get_profile_image %></td>
           <td style="height: 60px; vertical-align: middle;"><%= user.name %></td>
           <td style="height: 60px; vertical-align: middle;"><%= user.email %></td>
           <td style="height: 60px; vertical-align: middle;"><%= link_to "詳細", admin_user_path(user), class: "btn btn-sm btn-info" %></td>
-
         </tr>
       </tbody>
       <% end %>
