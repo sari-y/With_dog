@@ -45,7 +45,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:facility_name, :text, :post_code, :address, image: [])
+    params.require(:review).permit(:facility_name, :text, :rating, :post_code, :address, image: [])
   end
 
 end

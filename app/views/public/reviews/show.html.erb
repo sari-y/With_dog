@@ -32,6 +32,26 @@
           <td style="width: 70%; vertical-align: middle;"><%= @review.text %></td>
         </tr>
         <tr>
+          <td style="width: 30%; vertical-align: middle;">評価</td>
+          <td style="width: 70%; vertical-align: middle;">
+            <div id="post_raty"></div>
+              <script>
+                let elem = document.querySelector('#post_raty');
+                let opt = {
+                  path: '/assets',
+                  scoreName: 'review[rating]',
+                  score: <%= j(@review.rating ? @review.rating:0) %>,
+                  readOnly: true
+                 };
+                raty(elem,opt);
+              </script>
+            </td>
+        </tr>
+        <tr>
+          <td style="width: 30%; vertical-align: middle;">カテゴリー</td>
+          <td style="width: 70%; vertical-align: middle;"><%#= @review. %></td>
+        </tr>
+        <tr>
           <td style="width: 30%; vertical-align: middle;">郵便番号</td>
           <td style="width: 70%; vertical-align: middle;"><%= @review.post_code %></td>
         </tr>
