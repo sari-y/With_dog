@@ -10,8 +10,9 @@
           <h3>ログイン</h3>
         </div>
       </div>
-      <br>
-      <br>
+      <div class="col-md-10 mb-4 d-flex flex-row-reverse">
+        <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary btn-sm mb-3 sign_in", method: :post %>
+      </div>
 
       <%= form_with(model: resource, local: true, url: session_path(resource_name)) do |f| %>
 
