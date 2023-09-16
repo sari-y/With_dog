@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2023_09_09_103641) do
     t.string "post_code", null: false
     t.string "address", null: false
     t.text "text", null: false
-    t.integer "rating"
+    t.float "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

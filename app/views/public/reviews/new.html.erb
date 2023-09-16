@@ -49,11 +49,19 @@
 
         <div class="row">
           <div class="col-md-4">
-            <%#= f.label :rating, "評価" %>
+            <%= f.label :rating, "評価" %>
           </div>
           <div class="col-md-6 mb-3">
             <div class="field">
-              <%#= f.text_field :rating, class: "form-control" %>
+              <div id="post_raty"></div>
+              <script>
+                let elem = document.querySelector('#post_raty');
+                let opt = {
+                  path: '/assets',
+                  scoreName: 'review[rating]'
+                 };
+                raty(elem,opt);
+              </script>
             </div>
           </div>
         </div>
