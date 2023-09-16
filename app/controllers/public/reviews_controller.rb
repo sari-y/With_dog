@@ -1,5 +1,6 @@
 
 class Public::ReviewsController < ApplicationController
+   before_action :authenticate_user!, except: [:index, :show]
 
   def new
     @review = Review.new

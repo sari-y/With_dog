@@ -25,3 +25,4 @@ window.raty = function(elem,opt) {
   return raty;
 }
 
+

@@ -10,6 +10,10 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :encrypted_password, presence: true
+
   GUEST_USER_EMAIL = "guest@example.com"
 
   def get_profile_image

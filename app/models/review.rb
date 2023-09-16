@@ -6,7 +6,11 @@ class Review < ApplicationRecord
 
   has_many_attached :image
 
+  validates :facility_name, presence: true
   validates :text, presence: true
+  validates :post_code, presence: true
+  validates :address, presence: true
+  validates :image, presence: true
 
 
   def favorited_by?(user)

@@ -16,11 +16,14 @@
       <h3>レビュー投稿</h3>
       <br>
       <br>
-        <% if @review.errors.present? %>
-          <% @review.errors.full_messages.each do |msg| %>
-            <%= msg %>
+      <% if @review.errors.any? %>
+        <%= @review.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @review.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
           <% end %>
-        <% end %>
+        </ul>
+      <% end %>
 
         <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
 

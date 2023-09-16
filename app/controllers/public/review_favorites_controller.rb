@@ -1,4 +1,5 @@
 class Public::ReviewFavoritesController < ApplicationController
+   before_action :authenticate_user!
 
   def create
     review = Review.find(params[:review_id])
