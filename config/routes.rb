@@ -38,10 +38,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :admin do
 
-    resources :reviews, only: [:index, :show, :destroy]
+    resources :reviews, only: [:index, :show, :destroy] do
+     resources :review_comments, only: [:destroy]
+    end
+
     resources :users, only: [:index, :show, :destroy]
     resources :facility_categories, only: [:index, :create, :update, :destroy]
-    resources :review_comments, only: [:destroy]
 
   end
 

@@ -9,7 +9,7 @@ class Admin::ReviewCommentsController < ApplicationController
     else
       flash[:error] = "コメントの削除に失敗しました。"
     end
-    redirect_to review_path(@review)
+    redirect_to admin_review_path(@review)
   end
 
 

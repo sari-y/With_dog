@@ -1,61 +1,87 @@
+<br>
+<br>
 <div class="container">
   <div class="row">
+    <div class="col-10 mx-auto">
 
-    <div class="col-md-8 offset-md-1">
-      <h3>詳細情報</h3>
-      <%= link_to "削除", admin_review_path, method: :delete, class: "btn btn-success w-20" %>
+      <h4>レビュー詳細</h4>
 
+        <div class='container px-5 px-sm-0'>
+          <div class='row'>
+            <div class='col-md-11'>
+            <br>
+              <div class="row">
+                <div class="col-md-11 mb-4 d-flex flex-row-reverse">
+                  <%= link_to "削除", admin_user_path, method: :delete, class: "btn btn-danger w-25" %>
+                </div>
+              </div>
 
-      <table class="table">
-         <tr>
-          <td style="width: 30%">投稿者</td>
-          <td style="width: 70%"><%= @review.user.name %></td>
-        </tr>
+              <table class="table">
+                <thead>
+                 <tr>
+                  <td style="height: 75px; width: 30%; vertical-align: middle;">投稿者</td>
+                  <td style="height: 75px; width: 70%; vertical-align: middle;"><%= @review.user.name %></td>
+                </tr>
 
-        <tr>
-          <td style="width: 30%">施設名</td>
-          <td style="width: 70%"><%= @review.facility_name %></td>
-        </tr>
-        <tr>
-          <td style="width: 30%">レビュー</td>
-          <td style="width: 70%"><%= @review.text %></td>
-        </tr>
-        <tr>
-          <td style="width: 30%">郵便番号</td>
-          <td style="width: 70%"><%= @review.post_code %></td>
-        </tr>
-        <tr>
-          <td style="width: 30%">住所</td>
-          <td style="width: 70%"><%= @review.address %></td>
-        </tr>
-        <tr>
-          <td style="width: 30%">写真</td>
-          <td style="width: 70%">
+                <tr>
+                  <td style="height: 75px; width: 30%; vertical-align: middle;">施設名</td>
+                  <td style="height: 75px; width: 70%; vertical-align: middle;"><%= @review.facility_name %></td>
+                </tr>
 
-          </td>
-        </tr>
-      </table>
-      <div class="d-flex flex-wrap">
-        <% @review.image.each do |image| %>
-          <%= image_tag image.variant(resize: '240x240') if @review.image.attached? %>
-        <% end %>
-      </div>
+                <tr>
+                  <td style="height: 75px; width: 30%; vertical-align: middle;">レビュー</td>
+                  <td style="height: 75px; width: 70%; vertical-align: middle;"><%= @review.text %></td>
+                </tr>
 
+                <tr>
+                  <td style="height: 75px; width: 30%; vertical-align: middle;">郵便番号</td>
+                  <td style="height: 75px; width: 70%; vertical-align: middle;"><%= @review.post_code %></td>
+                </tr>
 
+                <tr>
+                  <td style="height: 75px; width: 30%; vertical-align: middle;">住所</td>
+                  <td style="height: 75px; width: 70%; vertical-align: middle;"><%= @review.address %></td>
+                </tr>
 
-      <div id="comments-area">
-        <h6>コメント</h6>
-        <% @review.review_comments.each do |review_comment| %>
-          <p><%= image_tag review_comment.user.get_profile_image %></p>
-          <%= link_to review_comment.user.name, users_my_page_path(review_comment.user) %>
-          <%= review_comment.text %>
-          <% if review_comment.user == current_user %>
-            <%= link_to "削除", review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger" %>
-          <% end %>
-        <% end %>
+                <tr>
+                  <td style="height: 75px; width: 30%">写真</td>
+                  <td style="height: 75px; width: 70%">
+                    <div class="d-flex flex-wrap">
+                      <% @review.image.each do |image| %>
+                        <%= image_tag image.variant(resize: '280x280') if @review.image.attached? %>
+                      <% end %>
+                    </div>
+                  </td>
+                </tr>
 
-
+                <tr>
+                  <td style="height: 75px; width: 30%">コメント</td>
+                  <td>
+                    <table class="table table-borderless">
+                      <tbody>
+                        <% @review.review_comments.each do |review_comment| %>
+                        <tr>
+                          <td>
+                            <%= link_to review_comment.user.name, admin_user_path(review_comment.user) %>
+                          </td>
+                          <td><%= review_comment.text %></td>
+                           <td><%= link_to "削除", admin_review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
+                        <% end %>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<br>
+<br>
+
+
+
