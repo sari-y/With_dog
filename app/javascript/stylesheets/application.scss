@@ -9,3 +9,21 @@ body {
 .logo {
   font-family: 'Hachi Maru Pop', cursive;
 }
+
+.main-container {
+ background-image: url("../images/top.jpg");
+ height: 800px;
+  background-size:cover;
+}
+
+.card {
+  height: 100%;
+}
+
+.card-footer {
+  margin-top: auto;
+}
+
+.edit-btn {
+  width: 130px;
+}
