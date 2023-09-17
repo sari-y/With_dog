@@ -7,7 +7,10 @@ class User < ApplicationRecord
   has_many :reviews, :dependent => :destroy
   has_many :review_comments, :dependent => :destroy
   has_many :review_favorites, :dependent => :destroy
-  #has_many :favorited_reviews, throguh: :review_favorites, source: :review
+
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :encrypted_password, presence: true
 
   has_one_attached :profile_image
 

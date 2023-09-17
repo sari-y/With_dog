@@ -1,5 +1,7 @@
 
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
 
   def new
     @review = Review.new
@@ -7,7 +9,6 @@ class Public::ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.new(review_params)
-    #byebug
     if @review.save
       params[:review][:facility_category_ids].each do |id|
         ReviewFacilityCategory.create(review_id: @review.id, facility_category_id: id)
@@ -23,10 +24,8 @@ class Public::ReviewsController < ApplicationController
     if params[:facility_category_ids].present?
       @facility_categories = params[:facility_category_ids]
       @reviews = Review.includes(:review_facility_categories).where(review_facility_categories: {facility_category_id: @facility_categories})
-    else  
+    else
       @reviews = Review.all
-    #@facirity_categories = Review.includes(:review_facility_categories).where(review_facility_categories: {facility_category_id: @params})
-    #byebug
     end
   end
 
@@ -34,7 +33,6 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @user = @review.user
     @review_comment = ReviewComment.new
-    #byebug
   end
 
   def edit
@@ -46,7 +44,10 @@ class Public::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
+      params[:review][:facility_category_ids].each do |id|
+      ReviewFacilityCategory.create(review_id: @review.id, facility_category_id: id)
       flash[:success] = "レビューを更新しました。"
+    end
       redirect_to review_path(@review)
     else
       flash[:error] = "レビューの更新に失敗しました。"
