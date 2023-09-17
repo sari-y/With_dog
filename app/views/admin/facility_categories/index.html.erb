@@ -1,40 +1,41 @@
-
-  <div class="container">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+    <br>
+    <br>
     <div class="row">
-      <div class="col-md-4">
-        
-        <h4 class="mr-5 mt-5">カテゴリー一覧・追加</h4>
-        <div class="row">
-          <%= form_with model: @facility_category,url: admin_facility_categories_path, method: :post do |f| %>
-          <p class="genre ml-3">カテゴリー名</p>
-          <p class="ml-3"><%= f.text_field :category_name %>
-          <%= f.submit "新規登録", class: "btn", style: "background-color: #64CCC5; color:white; mx-3" %>
-          <% end %>
-          </p>
-        </div>
-        
-        <div class="genres">
-          <div class="d-flex justify-content-center">
-            
-            <table class="table table-hover table-inverse">
-              <tr>
-                <th class="mr-5">カテゴリー</th>
-                <th></th>
-              </tr>
-              <% @facility_categories.each do |facility_category| %>
-              <tr>
-                <td><%= facility_category.category_name %></td>
-                <td><%= link_to "削除", admin_facility_category_path(facility_category.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
-                <% end %>
-              </tr>
-            </table>
-            
-          </div>
-        </div>
-        
+      <div class="col-6">
+        <h4>カテゴリー一覧・追加</h4>
       </div>
+    </div>
+    <br>
+    <%= form_with model: @facility_category,url: admin_facility_categories_path, method: :post do |f| %>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-3">
+        <h6>カテゴリー名</h6>
+      </div>
+      <div class="col-6">
+        <%= f.text_field :category_name%>
+        <%= f.submit "新規登録", class: "btn", style: "background-color: #64CCC5; color:white; mx-3" %>
+        <% end %>
+      </div>
+      <br>
+      <br>
+      <table class="table">
+        <% @facility_categories.each do |facility_category| %>
+          <tr>
+            <td></td>
+            <td style="height: 80px; vertical-align: middle;"><%= facility_category.category_name %></td>
+            <td style="height: 80px; vertical-align: middle;"><%= link_to "削除", admin_facility_category_path(facility_category.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>
+</div>
+<br>
+<br>
 
 
