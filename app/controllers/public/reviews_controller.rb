@@ -7,21 +7,34 @@ class Public::ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.new(review_params)
+    #byebug
     if @review.save
-      redirect_to reviews_path, notice: "新規投稿が正常に行われました。"
+      params[:review][:facility_category_ids].each do |id|
+        ReviewFacilityCategory.create(review_id: @review.id, facility_category_id: id)
+      end
+       redirect_to reviews_path, notice: "新規投稿が正常に行われました。"
     else
       render :new
     end
+
   end
 
   def index
-    @reviews = Review.all
+    if params[:facility_category_ids].present?
+      @facility_categories = params[:facility_category_ids]
+      @reviews = Review.includes(:review_facility_categories).where(review_facility_categories: {facility_category_id: @facility_categories})
+    else  
+      @reviews = Review.all
+    #@facirity_categories = Review.includes(:review_facility_categories).where(review_facility_categories: {facility_category_id: @params})
+    #byebug
+    end
   end
 
   def show
     @review = Review.find(params[:id])
     @user = @review.user
     @review_comment = ReviewComment.new
+    #byebug
   end
 
   def edit
@@ -49,3 +62,8 @@ class Public::ReviewsController < ApplicationController
   end
 
 end
+
+
+
+
+
