@@ -40,7 +40,7 @@
                 let opt = {
                   path: '/assets',
                   scoreName: 'review[rating]',
-                   score: <%= j(@review.rating ? @review.rating:0) %>,
+                  score: <%= j(@review.rating ? @review.rating : 0) %>,
                   readOnly: true
                  };
                 raty(elem,opt);
