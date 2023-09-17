@@ -68,11 +68,11 @@
 
         <div class="row">
           <div class="col-md-4">
-            <%#= f.label :review_facility_category, "カテゴリー" %>
+            <%= f.label :review_facility_category, "カテゴリー" %>
           </div>
           <div class="col-md-6 mb-3">
             <div class="field">
-              <%#= f.text_field :review_facility_category, class: "form-control" %>
+              <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false %>
             </div>
           </div>
         </div>

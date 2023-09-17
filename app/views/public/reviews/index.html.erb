@@ -4,7 +4,23 @@
       <br>
       <br>
 
+  <%= form_with url: reviews_path, method: :get do |f| %>
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :review_facility_category, "カテゴリー" %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="field">
+              <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false %>
+
+              <%#= f.text_field :review_facility_category, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <%= f.submit "検索" %>
+  <% end %>
   <h3>レビュー一覧</h3>
+
   <br>
   <div class="row">
     <% @reviews.each do |review| %>
@@ -25,7 +41,7 @@
               <%= truncate(review.text, :length => 20) %>
             </div>
             <div class="card-name">
-              <%#= link_to review.user.name, user_path(user) %>
+              <%= link_to review.user.name, users_my_page_path(review.user) %>
             </div>
           </div>
           <div class="card-footer text-right">

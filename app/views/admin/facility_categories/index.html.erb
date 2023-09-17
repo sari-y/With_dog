@@ -1,2 +1,40 @@
-<h1>Admin::FacilityCategories#index</h1>
-<p>Find me in app/views/admin/facility_categories/index.html.erb</p>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        
+        <h4 class="mr-5 mt-5">カテゴリー一覧・追加</h4>
+        <div class="row">
+          <%= form_with model: @facility_category,url: admin_facility_categories_path, method: :post do |f| %>
+          <p class="genre ml-3">カテゴリー名</p>
+          <p class="ml-3"><%= f.text_field :category_name %>
+          <%= f.submit "新規登録", class: "btn", style: "background-color: #64CCC5; color:white; mx-3" %>
+          <% end %>
+          </p>
+        </div>
+        
+        <div class="genres">
+          <div class="d-flex justify-content-center">
+            
+            <table class="table table-hover table-inverse">
+              <tr>
+                <th class="mr-5">カテゴリー</th>
+                <th></th>
+              </tr>
+              <% @facility_categories.each do |facility_category| %>
+              <tr>
+                <td><%= facility_category.category_name %></td>
+                <td><%= link_to "削除", admin_facility_category_path(facility_category.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
+                <% end %>
+              </tr>
+            </table>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
