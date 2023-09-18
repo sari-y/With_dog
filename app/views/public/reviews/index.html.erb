@@ -1,30 +1,50 @@
+<br>
+<br>
 <div class="container">
    <div class="row">
-    <div class="col-10 mx-auto">
-      <br>
-      <br>
+    <div class="col-md-10">
+      <h3>レビュー一覧</h3>
+      </div>
+      </div>
+   <div class="row">
+    <div class="col-md-2">
 
-  <%= form_with url: reviews_path, method: :get do |f| %>
-        <div class="row">
-          <div class="col-md-4">
+    <br>
+
+  <div class="form-wrapper">
+    <%= form_with url: reviews_path, method: :get do |f| %>
+    <table class="table">
+      <thead class="thead-light">
+        
+        <tr>
+          <th>
             <%= f.label :review_facility_category, "カテゴリー" %>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="field">
-              <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false %>
+            </th>
+            </tr>
+            </thead>
+            <tbody>
+          <tr>
+            <td>
 
-              <%#= f.text_field :review_facility_category, class: "form-control" %>
-            </div>
-          </div>
-        </div>
-        <%= f.submit "検索" %>
+          <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false %>
+        </td>
+        </tr>
+        <tr>
+          <td>
+    <%= f.submit "検索" %>
+  </td>
+  </tr>
+  </tbody>
+  </table>
   <% end %>
-  <h3>レビュー一覧</h3>
+</div>
+</div>
 
+  <div class='col-md-8 offset-md-1'>
   <br>
   <div class="row">
     <% @reviews.each do |review| %>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="card">
           <% count=1 %>
           <% review.image.each do |image| %>
@@ -66,6 +86,8 @@
       </div>
     <% end %>
   </div>
+</div>
+</div>
 </div>
 </div>
 </div>
