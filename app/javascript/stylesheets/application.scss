@@ -12,9 +12,28 @@ body {
 
 .main-container {
  background-image: url("../images/top.jpg");
- height: 800px;
+ height: 650px;
   background-size:cover;
+  background-position: center bottom;
 }
+
+.main-container {
+  position: relative; /* 相対位置指定 */
+  text-align: right; /* テキストを右寄せ */
+}
+
+
+.top-text {
+  color: #330000;
+  position: absolute; /* 絶対位置指定 */
+  bottom: 0; /* 下端に配置 */
+  right: 0; /* 右端に配置 */
+  background-color: rgba(255, 255, 255, 0.5); /* 背景色を半透明にする (0.5は透明度を示す) */
+  padding: 30px; /* テキストと枠線の間の余白 */
+  margin: 80px;
+  border: 2px solid white; /* 白色の枠線を追加 */
+}
+
 
 .card {
   height: 100%;
@@ -31,4 +50,15 @@ body {
 .paginate {
   display: flex;
   justify-content: center;
+}
+
+/* .logo-image {
+  image-url("logo.jpg");
+  size: 250px;
+} */
+
+
+.form-wrapper {
+  border: 1px solid #ccc; /* 枠線を追加 */
+  padding: 20px; /* フォームと枠線の間の余白 */
 }
