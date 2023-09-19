@@ -12,50 +12,75 @@
             <br>
               <div class="row">
                 <div class="col-md-11 mb-4 d-flex flex-row-reverse">
-                  <%= link_to "削除", admin_user_path, method: :delete, class: "btn btn-danger w-25" %>
+                  <%= link_to "削除", admin_user_path, method: :delete, class: "btn btn-danger edit-btn" %>
                 </div>
               </div>
 
               <table class="table">
                 <thead>
                  <tr>
-                  <td style="height: 75px; width: 30%; vertical-align: middle;">投稿者</td>
-                  <td style="height: 75px; width: 70%; vertical-align: middle;"><%= @review.user.name %></td>
+                  <td style="height: 75px; width: 40%; vertical-align: middle;">投稿者</td>
+                  <td style="height: 75px; width: 60%; vertical-align: middle;"><%= @review.user.name %></td>
                 </tr>
 
                 <tr>
-                  <td style="height: 75px; width: 30%; vertical-align: middle;">施設名</td>
-                  <td style="height: 75px; width: 70%; vertical-align: middle;"><%= @review.facility_name %></td>
+                  <td style="height: 75px; width: 40%; vertical-align: middle;">施設名</td>
+                  <td style="height: 75px; width: 60%; vertical-align: middle;"><%= @review.facility_name %></td>
                 </tr>
 
                 <tr>
-                  <td style="height: 75px; width: 30%; vertical-align: middle;">レビュー</td>
-                  <td style="height: 75px; width: 70%; vertical-align: middle;"><%= @review.text %></td>
+                  <td style="height: 75px; width: 40%; vertical-align: middle;">レビュー</td>
+                  <td style="height: 75px; width: 60%; vertical-align: middle;"><%= @review.text %></td>
                 </tr>
 
                 <tr>
-                  <td style="height: 75px; width: 30%; vertical-align: middle;">郵便番号</td>
-                  <td style="height: 75px; width: 70%; vertical-align: middle;"><%= @review.post_code %></td>
+                  <td style="height: 75px; width: 40%; vertical-align: middle;">評価</td>
+                  <td style="height: 75px; width: 60%; vertical-align: middle;">
+                    <div id="post_raty"></div>
+                    <script>
+                      let elem = document.querySelector('#post_raty');
+                      let opt = {
+                        //path: '/assets',
+                        starOn: "<%= asset_path('star-on.png') %>",
+                        starOff: "<%= asset_path('star-off.png') %>",
+                        starHalf: "<%= asset_path('star-half.png') %>",
+                        scoreName: 'review[rating]',
+                        score: <%= j(@review.rating ? @review.rating : 0) %>,
+                        readOnly: true
+                       };
+                      raty(elem,opt);
+                    </script>
+                  </td>
                 </tr>
 
                 <tr>
-                  <td style="height: 75px; width: 30%; vertical-align: middle;">住所</td>
-                  <td style="height: 75px; width: 70%; vertical-align: middle;"><%= @review.address %></td>
+                  <td style="height: 75px; width: 40%; vertical-align: middle;">カテゴリー</td>
+                  <td style="height: 75px; width: 60%; vertical-align: middle;"><%= @review.facility_categories.pluck(:category_name).join(",") %></td>
                 </tr>
 
                 <tr>
-                  <td style="height: 75px; width: 30%">写真</td>
-                  <td style="height: 75px; width: 70%">
+                  <td style="height: 75px; width: 40%; vertical-align: middle;">郵便番号</td>
+                  <td style="height: 75px; width: 60%; vertical-align: middle;"><%= @review.post_code %></td>
+                </tr>
+
+                <tr>
+                  <td style="height: 75px; width: 40%; vertical-align: middle;">住所</td>
+                  <td style="height: 75px; width: 60%; vertical-align: middle;"><%= @review.address %></td>
+                </tr>
+
+                <tr>
+                  <td style="height: 75px; width: 40%">写真</td>
+                  <td style="height: 75px; width: 60%">
                     <div class="d-flex flex-wrap">
                       <% @review.image.each do |image| %>
-                        <%= image_tag image.variant(resize: '280x280') if @review.image.attached? %>
+                        <%= image_tag image.variant(resize: '230x230') if @review.image.attached? %>
                       <% end %>
                     </div>
                   </td>
                 </tr>
 
                 <tr>
-                  <td style="height: 75px; width: 30%">コメント</td>
+                  <td style="height: 75px; width: 40%">コメント</td>
                   <td>
                     <table class="table table-borderless">
                       <tbody>
