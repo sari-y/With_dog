@@ -5,7 +5,7 @@
     <br>
     <div class="row">
       <div class="col-6">
-        <h4>カテゴリー一覧・追加</h4>
+        <h4>カテゴリー一覧</h4>
       </div>
     </div>
     <br>
@@ -17,7 +17,7 @@
       </div>
       <div class="col-6">
         <%= f.text_field :category_name%>
-        <%= f.submit "新規登録", class: "btn", style: "background-color: #64CCC5; color:white; mx-3" %>
+        <%= f.submit "新規登録", class: "btn edit-btn", style: "background-color: #64CCC5; color:white; mx-3" %>
         <% end %>
       </div>
       <br>
@@ -25,9 +25,9 @@
       <table class="table">
         <% @facility_categories.each do |facility_category| %>
           <tr>
-            <td></td>
-            <td style="height: 80px; vertical-align: middle;"><%= facility_category.category_name %></td>
-            <td style="height: 80px; vertical-align: middle;"><%= link_to "削除", admin_facility_category_path(facility_category.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
+            <td style="height: 80px; width: 10%; vertical-align: middle;"></td>
+            <td style="height: 80px; width: 50%; vertical-align: middle;"><%= facility_category.category_name %></td>
+            <td style="height: 80px; width: 40%; vertical-align: middle;"><%= link_to "削除", admin_facility_category_path(facility_category.id), method: :delete, class: "btn btn-sm btn-danger edit-btn" %></td>
           </tr>
         <% end %>
       </table>
