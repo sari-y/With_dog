@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
 
 
+  namespace :public do
+    get 'attachments/destroy'
+  end
  devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -21,7 +24,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'users/confirm_withdraw' => 'users#confirm_withdraw'
     delete 'users/withdraw' => 'users#withdraw'
 
-
+    resources :attachments, controller: 'attachments', only: %i[destroy]
 
     resources :reviews do
      resource :review_favorites, only: [:create, :destroy]

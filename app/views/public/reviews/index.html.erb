@@ -13,30 +13,12 @@
 
   <div class="form-wrapper">
     <%= form_with url: reviews_path, method: :get do |f| %>
-    <table class="table">
-      <thead class="thead-light">
-
-        <tr>
-          <th>
-            <%= f.label :review_facility_category, "カテゴリー" %>
-            </th>
-            </tr>
-            </thead>
-            <tbody>
-          <tr>
-            <td>
-
-          <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false %>
-        </td>
-        </tr>
-        <tr>
-          <td>
-    <%= f.submit "検索" %>
-  </td>
-  </tr>
-  </tbody>
-  </table>
-  <% end %>
+      <%= f.label :review_facility_category, "カテゴリー" %>
+        <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false do |b| %>
+          <%= b.label { b.check_box + b.text } %><br>
+        <% end %>
+      <%= f.submit "検索" %>
+    <% end %>
 </div>
 </div>
 

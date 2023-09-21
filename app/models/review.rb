@@ -19,4 +19,9 @@ class Review < ApplicationRecord
       review_favorites.exists?(user_id: user.id)
   end
 
+  #addressの文字列から自動で緯度と経度のカラムに値を代入
+  geocoded_by :address
+  #addressカラムが値が代入される時（createとupdate）に、緯度と経度を住所から変換
+  after_validation :geocode, if: :address_changed?
+
 end

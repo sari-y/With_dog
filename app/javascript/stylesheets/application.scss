@@ -80,3 +80,7 @@ body {
   border: 1px solid #ccc; /* 枠線を追加 */
   padding: 20px; /* フォームと枠線の間の余白 */
 }
+
+[id^="facility_category_ids_"] {
+  margin-right: 0.5em;
+}
