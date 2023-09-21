@@ -24,7 +24,7 @@
       <tbody>
         <tr>
           <td style="height: 60px; vertical-align: middle;"><%= user.id %></td>
-          <td style="height: 60px; vertical-align: middle;"><%= image_tag user.get_profile_image %></td>
+          <td style="height: 60px; vertical-align: middle;"><%= image_tag user.get_profile_image(100,100) %></td>
           <td style="height: 60px; vertical-align: middle;"><%= user.name %></td>
           <td style="height: 60px; vertical-align: middle;"><%= user.email %></td>
           <td style="height: 60px; vertical-align: middle;"><%= link_to "詳細", admin_user_path(user), class: "btn btn-sm btn-info" %></td>

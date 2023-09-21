@@ -15,7 +15,7 @@
     <%= form_with url: reviews_path, method: :get do |f| %>
     <table class="table">
       <thead class="thead-light">
-        
+
         <tr>
           <th>
             <%= f.label :review_facility_category, "カテゴリー" %>
@@ -61,7 +61,7 @@
               <%= truncate(review.text, :length => 20) %>
             </div>
             <div class="card-name">
-              <%= link_to review.user.name, users_my_page_path(review.user) %>
+              <%= link_to_if user_signed_in?, review.user.name, users_my_page_path(review.user) %>
             </div>
           </div>
           <div class="card-footer text-right">

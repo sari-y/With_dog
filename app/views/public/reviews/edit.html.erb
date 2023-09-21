@@ -63,6 +63,7 @@
                   starOff: "<%= asset_path('star-off.png') %>",
                   starHalf: "<%= asset_path('star-half.png') %>",
                   scoreName: 'review[rating]',
+                  score: <%= @review.rating %>
                  };
                 raty(elem,opt);
               </script>
@@ -110,6 +111,11 @@
           <div class="col-md-6 mb-5">
             <div class="field">
               <%= f.file_field :image, multiple: true, accept: "image/*" %>
+            </div>
+            <div class="d-flex flex-wrap">
+              <% @review.image.each do |image| %>
+                <%= image_tag image.variant(resize: '300x300') if @review.image.attached? %>
+              <% end %>
             </div>
           </div>
         </div>

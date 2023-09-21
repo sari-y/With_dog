@@ -36,7 +36,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def edit
-     @review = Review.find(params[:id])
+    @review = Review.find(params[:id])
     @user = @review.user
   end
 
@@ -44,6 +44,7 @@ class Public::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
+      @review.review_facility_categories.destroy_all
       params[:review][:facility_category_ids].each do |id|
       ReviewFacilityCategory.create(review_id: @review.id, facility_category_id: id)
       flash[:success] = "レビューを更新しました。"

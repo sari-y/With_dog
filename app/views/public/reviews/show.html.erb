@@ -78,25 +78,27 @@
 
       <div id="comments-area">
         <h6 style="height: 70px; line-height: 70px;">コメント</h6>
-        <% @review.review_comments.each do |review_comment| %>
         <table class="table">
-        <th>
-          <td><%= image_tag review_comment.user.get_profile_image %></td>
+          <tbody>
+          <% @review.review_comments.each do |review_comment| %>
+        <tr>
+          <td><%= image_tag review_comment.user.get_profile_image(100,100) %></td>
           <td><%= link_to review_comment.user.name, users_my_page_path(review_comment.user) %></td>
-          <td><%= review_comment.text %>
-          <% if review_comment.user == current_user %>
+          <td><%= review_comment.text %></td>
+          <td><% if review_comment.user == current_user %>
             <%= link_to "削除", review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger" %>
           <% end %>
           </td>
+          </tr>
         <% end %>
-        </th>
+        </tbody>
         </table>
 
       <div class="row">
         <div class="col-md-1"></div>
          <div class="col-md-6">
         <%= form_with model: [@review, @review_comment], url: review_review_comments_path(@review.id), method: :post do |f| %>
-          <%= f.text_area :text, rows: '5', cols: 60 %>
+          <%= f.text_area :text, rows: '5', cols: 70 %>
           <%= f.submit "送信" %>
         <% end %>
         </div>
