@@ -7,6 +7,8 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :address, null: false
       t.text :text, null: false
       t.float :rating
+      t.float :latitude
+      t.float :longitude
       t.timestamps
     end
   end

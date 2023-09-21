@@ -25,7 +25,7 @@ class Public::ReviewsController < ApplicationController
       @facility_categories = params[:facility_category_ids]
       @reviews = Review.includes(:review_facility_categories).where(review_facility_categories: {facility_category_id: @facility_categories})
     else
-      @reviews = Review.all
+      @reviews = Review.all.order(created_at: :desc)
     end
   end
 
@@ -60,7 +60,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:facility_name, :text, :rating, :post_code, :address, image: [])
+    params.require(:review).permit(:facility_name, :text, :rating, :post_code, :address, :latitude, :longitude, image: [])
   end
 
 end
