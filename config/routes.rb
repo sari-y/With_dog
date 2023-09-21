@@ -15,7 +15,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
  scope module: :public do
     root 'homes#top'
     get '/about' => 'homes#about'
-    get 'users/my_page' => 'users#show'
+    get 'users/my_page/:id' => 'users#show', as:'users_my_page'
     get 'users/information/edit' => 'users#edit'
     patch 'users/information' => 'users#update'
     get 'users/confirm_withdraw' => 'users#confirm_withdraw'

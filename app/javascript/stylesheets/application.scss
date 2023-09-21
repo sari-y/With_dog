@@ -36,6 +36,27 @@ body {
   border: 2px solid white; /* 白色の枠線を追加 */
 }
 
+.about-container {
+ background-image: url("../images/about2.jpg");
+ height: 600px;
+  background-size:cover;
+  background-position: center;
+  position: relative; /* 親要素を相対位置指定にする */
+}
+
+.about-text {
+  color: white;
+  position: absolute; /* 絶対位置指定 */
+  bottom: 0; /* 下端に配置 */
+  right: 0; /* 右端に配置 */
+  background-color: rgba(255, 255, 255, 0.5); /* 背景色を半透明にする (0.5は透明度を示す) */
+  padding: 30px; /* テキストと枠線の間の余白 */
+  height: 100%; /* 高さを親要素に合わせる */
+  display: flex; /* フレックスコンテナにする */
+  justify-content: center; /* 水平方向の中央寄せ */
+  align-items: center; /* 垂直方向の中央寄せ */
+}
+
 
 .card {
   height: 100%;
