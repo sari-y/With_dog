@@ -13,7 +13,8 @@ class Public::ReviewsController < ApplicationController
       params[:review][:facility_category_ids].each do |id|
         ReviewFacilityCategory.create(review_id: @review.id, facility_category_id: id)
       end
-       redirect_to reviews_path, notice: "新規投稿が正常に行われました。"
+      flash[:notice] = "新規投稿が正常に行われました。"
+       redirect_to reviews_path
     else
       render :new
     end
@@ -47,11 +48,11 @@ class Public::ReviewsController < ApplicationController
       @review.review_facility_categories.destroy_all
       params[:review][:facility_category_ids].each do |id|
       ReviewFacilityCategory.create(review_id: @review.id, facility_category_id: id)
-      flash[:success] = "レビューを更新しました。"
+      flash[:notice] = "レビューを更新しました。"
     end
       redirect_to review_path(@review)
     else
-      flash[:error] = "レビューの更新に失敗しました。"
+      flash[:notice] = "レビューの更新に失敗しました。"
       render :edit
     end
   end
