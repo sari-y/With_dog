@@ -16,23 +16,26 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
  scope module: :public do
-    root 'homes#top'
-    get '/about' => 'homes#about'
-    get 'users/my_page/:id' => 'users#show', as:'users_my_page'
-    get 'users/information/edit' => 'users#edit'
-    patch 'users/information' => 'users#update'
-    get 'users/confirm_withdraw' => 'users#confirm_withdraw'
-    delete 'users/withdraw' => 'users#withdraw'
+  root 'homes#top'
+  get '/about' => 'homes#about'
+  get 'users/my_page/:id' => 'users#show', as:'users_my_page'
+  get 'users/information/edit' => 'users#edit'
+  patch 'users/information' => 'users#update'
+  get 'users/confirm_withdraw' => 'users#confirm_withdraw'
+  delete 'users/withdraw' => 'users#withdraw'
 
-    resources :attachments, controller: 'attachments', only: %i[destroy]
+  resources :attachments, controller: 'attachments', only: %i[destroy]
 
-    resources :reviews do
-     resource :review_favorites, only: [:create, :destroy]
-     resources :review_comments, only: [:create, :update, :destroy]
-    end
+  resources :reviews do
+    resource :review_favorites, only: [:create, :destroy]
+    resources :review_comments, only: [:create, :update, :destroy]
+  end
 
-
-
+   resources :users do
+  resource :relationships, only: [:create, :destroy]
+  get 'followings' => 'relationships#followings', as: 'followings'
+  get 'followers' => 'relationships#followers', as: 'followers'
+  end
 
 
   end
