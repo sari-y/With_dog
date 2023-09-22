@@ -14,8 +14,8 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
-    flash[:update] = "登録情報を更新しました。"
-    redirect_to  users_my_page_path
+    flash[:notice] = "登録情報を更新しました。"
+    redirect_to  users_my_page_path(current_user)
   end
 
   def confirm_withdraw

@@ -1,4 +1,7 @@
-<br>
+<div class='col-md-6 offset-1'>
+      <%= flash[:notice] %>
+    </div>
+    <br>
 <br>
 <div class="container px-5 px-sm-0">
   <div class="row">
@@ -146,6 +149,7 @@
 
       <div id="comments-area">
         <h6 style="height: 70px; line-height: 70px;">コメント</h6>
+        <%= flash[:comment] %>
         <table class="table">
           <tbody>
           <% @review.review_comments.each do |review_comment| %>

@@ -82,6 +82,7 @@
                 <tr>
                   <td style="height: 75px; width: 40%">コメント</td>
                   <td>
+                    <%= flash[:comment] %>
                     <table class="table table-borderless">
                       <tbody>
                         <% @review.review_comments.each do |review_comment| %>
