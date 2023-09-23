@@ -1,6 +1,4 @@
-<div class='col-md-6 offset-1'>
-      <%= flash[:destroy] %>
-    </div>
+
     <br>
 <div class="main-container">
   <div class="top-text">
@@ -29,7 +27,7 @@
   <div class="row">
     <% @reviews.each do |review| %>
       <div class="col-md-4">
-        <div class="card">
+        <div class="card card-reviews">
           <% count=1 %>
           <% review.image.each do |image| %>
             <% if count==1 %>

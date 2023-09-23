@@ -8,9 +8,9 @@ class Public::ReviewCommentsController < ApplicationController
     comment.review_id = @review.id
     @review_comment = ReviewComment.new
     if comment.save
-      flash[:comment] = "コメントが投稿されました。"
+      flash[:notice] = "コメントが投稿されました。"
     else
-      flash[:comment] = "コメントの投稿に失敗しました。"
+      flash[:notice] = "コメントの投稿に失敗しました。"
     end
     redirect_to review_path(@review)
   end
@@ -20,9 +20,9 @@ class Public::ReviewCommentsController < ApplicationController
     comment = @review.review_comments.find(params[:id])
     @review_comment = ReviewComment.new
     if comment.destroy
-      flash[:comment] = "コメントが削除されました。"
+      flash[:notice] = "コメントが削除されました。"
     else
-      flash[:comment] = "コメントの削除に失敗しました。"
+      flash[:notice] = "コメントの削除に失敗しました。"
     end
     redirect_to review_path(@review)
   end

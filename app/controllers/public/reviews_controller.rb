@@ -39,6 +39,11 @@ class Public::ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:id])
     @user = @review.user
+    if @user == current_user
+      render "edit"
+    else
+      redirect_to reviews_path
+    end
   end
 
 
@@ -56,6 +61,14 @@ class Public::ReviewsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    flash[:notice] = "レビューを削除しました。"
+    redirect_to reviews_path
+  end
+
 
 
   private

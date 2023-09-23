@@ -1,6 +1,4 @@
-<div class='col-md-6 offset-1'>
-      <%= flash[:notice] %>
-    </div>
+
     <br>
 <br>
 <div class="container px-5 px-sm-0">
@@ -20,9 +18,11 @@
           <div class="col-md-6">
       <h3>詳細情報</h3>
       </div>
+      <% if @user.id == current_user.id %>
       <div class="col-md-12 mb-4 d-flex flex-row-reverse">
       <%= link_to "編集", edit_review_path, class: "btn btn-success edit-btn" %>
       </div>
+      <% end %>
       </div>
 
       <table class="table" style="height: 300px;">
@@ -66,11 +66,11 @@
           <td style="width: 70%; vertical-align: middle;"><%= @review.address %></td>
         </tr>
         <tr>
-          <td>Distance</td>
+          <td style="width: 30%; vertical-align: middle;">現在地からの距離</td>
           <td id="distance"></td>
         </tr>
         <tr>
-          <td style="width: 30%; vertical-align: middle;">地図</td>
+          <td style="width: 30%;">地図</td>
           <td style="width: 70%; vertical-align: middle;">
             <script type="text/javascript">
             　const R = Math.PI / 180;
@@ -134,22 +134,28 @@
           </td>
         </tr>
         <tr>
-          <td style="width: 30%; vertical-align: middle;">写真</td>
-          <td style="width: 70%"><%= link_to '全ての画像を削除', attachment_path(@review), method: :delete, class: 'btn btn-danger' %>
+          <td style="width: 30%">写真</td>
+          <td style="width: 70%">
+            <div class="text-right mb-3">
+              <% if @user.id == current_user.id %>
+              <%= link_to '全ての画像を削除', attachment_path(@review), method: :delete, class: 'btn-sm btn-danger' %>
+              <% end %>
+            </div>
+            <div class="d-flex flex-wrap">
+            <% @review.image.each do |image| %>
+              <%= image_tag image.variant(resize: '210x210') if @review.image.attached? %>
+            <% end %>
+            </div>
           </td>
+          </tr>
+
+   <div id="comments-area">
+       <tr>
+        <td style="width: 30%; vertical-align: middle;">コメント</td>
+        <td style="width: 70%; vertical-align: middle;"></td>
         </tr>
-      </table>
-      <div class="d-flex flex-wrap">
-        <% @review.image.each do |image| %>
-          <%= image_tag image.variant(resize: '300x300') if @review.image.attached? %>
-        <% end %>
-      </div>
+        </table>
 
-
-
-      <div id="comments-area">
-        <h6 style="height: 70px; line-height: 70px;">コメント</h6>
-        <%= flash[:comment] %>
         <table class="table">
           <tbody>
           <% @review.review_comments.each do |review_comment| %>
@@ -166,8 +172,8 @@
         </tbody>
         </table>
 
+
       <div class="row">
-        <div class="col-md-1"></div>
          <div class="col-md-6">
         <%= form_with model: [@review, @review_comment], url: review_review_comments_path(@review.id), method: :post do |f| %>
           <%= f.text_area :text, rows: '5', cols: 70 %>

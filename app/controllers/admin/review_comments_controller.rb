@@ -6,9 +6,9 @@ class Admin::ReviewCommentsController < ApplicationController
     comment = @review.review_comments.find(params[:id])
     @review_comment = ReviewComment.new
     if comment.destroy
-      flash[:comment] = "コメントが削除されました。"
+      flash[:notice] = "コメントが削除されました。"
     else
-      flash[:comment] = "コメントの削除に失敗しました。"
+      flash[:notice] = "コメントの削除に失敗しました。"
     end
     redirect_to admin_review_path(@review)
   end
