@@ -4,131 +4,132 @@
   <div class='row'>
     <div class='col-md-3'>
 
-      <h4>会員情報</h4>
+      <h4 class="underlined-text">会員情報</h4>
+      <br>
       <br>
 
       <%= render 'public/users/info', user: current_user %>
 
-    </div>
+      </div>
 
-    <div class='col-md-8 offset-md-1'>
-
-      <h3>レビュー投稿</h3>
-      <br>
-      <br>
-        <% if @review.errors.present? %>
-          <% @review.errors.full_messages.each do |msg| %>
-            <%= msg %>
+      <div class='col-md-8 offset-md-1'>
+  
+        <h3 class="underlined-text">レビュー投稿</h3>
+        <br>
+        <br>
+          <% if @review.errors.present? %>
+            <% @review.errors.full_messages.each do |msg| %>
+              <%= msg %>
+            <% end %>
           <% end %>
+  
+          <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
+  
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :facility_name, "施設名" %>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="field">
+                <%= f.text_field :facility_name, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :text, "レビュー" %>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="field">
+                <%= f.text_field :text, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+  
+  
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :rating, "評価" %>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="field">
+                <div id="post_raty"></div>
+                <script>
+                  let elem = document.querySelector('#post_raty');
+                  let opt = {
+                    //path: '/assets',
+                    starOn: "<%= asset_path('star-on.png') %>",
+                    starOff: "<%= asset_path('star-off.png') %>",
+                    starHalf: "<%= asset_path('star-half.png') %>",
+                    scoreName: 'review[rating]'
+                   };
+                  raty(elem,opt);
+                </script>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :review_facility_category, "カテゴリー" %>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="field">
+                <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false do |b| %>
+              <%= b.label { b.check_box + b.text } %>
+          <% end %>
+          </div>
+            </div>
+          </div>
+  
+  
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :post_code, "郵便番号" %>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="field">
+                <%= f.text_field :post_code, class: "form-control", placeholder: "000-0000" %>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :address, "住所" %>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="field">
+                <%= f.text_field :address, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :image, "写真" %>
+            </div>
+            <div class="col-md-6 mb-5">
+              <div class="field">
+                <%= f.file_field :image, multiple: true, accept: "image/*" %>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-8"></div>
+              <div class="col-md-4 mb-5">
+                <div class="actions">
+                <%= f.submit "新規登録", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF; font-weight: bold;" %>
+              </div>
+          </div>
+          </div>
+  
+  
         <% end %>
-
-        <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
-
-        <div class="row">
-          <div class="col-md-4">
-            <%= f.label :facility_name, "施設名" %>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="field">
-              <%= f.text_field :facility_name, class: "form-control" %>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-4">
-            <%= f.label :text, "レビュー" %>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="field">
-              <%= f.text_field :text, class: "form-control" %>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="col-md-4">
-            <%= f.label :rating, "評価" %>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="field">
-              <div id="post_raty"></div>
-              <script>
-                let elem = document.querySelector('#post_raty');
-                let opt = {
-                  //path: '/assets',
-                  starOn: "<%= asset_path('star-on.png') %>",
-                  starOff: "<%= asset_path('star-off.png') %>",
-                  starHalf: "<%= asset_path('star-half.png') %>",
-                  scoreName: 'review[rating]'
-                 };
-                raty(elem,opt);
-              </script>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-4">
-            <%= f.label :review_facility_category, "カテゴリー" %>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="field">
-              <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false do |b| %>
-            <%= b.label { b.check_box + b.text } %>
-        <% end %>
-        </div>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="col-md-4">
-            <%= f.label :post_code, "郵便番号" %>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="field">
-              <%= f.text_field :post_code, class: "form-control", placeholder: "000-0000" %>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-4">
-            <%= f.label :address, "住所" %>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="field">
-              <%= f.text_field :address, class: "form-control" %>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-4">
-            <%= f.label :image, "写真" %>
-          </div>
-          <div class="col-md-6 mb-5">
-            <div class="field">
-              <%= f.file_field :image, multiple: true, accept: "image/*" %>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-8"></div>
-            <div class="col-md-4 mb-5">
-              <div class="actions">
-              <%= f.submit "新規登録", class: "btn btn-info w-50" %>
-            </div>
-        </div>
-        </div>
-
-
-      <% end %>
-
+  
+      </div>
     </div>
   </div>
-</div>
-
+  

@@ -12,8 +12,8 @@
       <br>
       <br>
       <div class="text-center">
-        <%= link_to "退会しない", users_my_page_path, class: "btn btn-info w-25 mr-3" %>
-        <%= link_to "退会する", users_withdraw_path, method: :patch, class: "btn btn-danger w-25" %>
+        <%= link_to "退会しない", users_my_page_path(current_user), class: "btn edit-btn mr-5", style: "background-color: #ff7f50; color: #FFF;" %>
+        <%= link_to "退会する", users_withdraw_path, method: :patch, class: "btn btn-danger edit-btn" %>
       </div>
     </div>
   </div>

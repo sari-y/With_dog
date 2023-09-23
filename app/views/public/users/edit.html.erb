@@ -6,7 +6,7 @@
 
       <div class="row">
         <div class="col-md-5">
-          <h3>登録情報変更</h3>
+          <h3 class="underlined-text">登録情報変更</h3>
         </div>
       </div>
       <br>
@@ -51,11 +51,11 @@
           <div class="row">
             <div class="col-md-4"></div>
               <div class="col-md-4">
-                <%= f.submit "更新", class: "btn btn-success w-50" %>
+                <%= f.submit "更新", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
               </div>
         <% end %>
               <div class="col-md-4">
-                <%= link_to "退会", users_confirm_withdraw_path, class: "btn btn-danger w-50" %>
+                <%= link_to "退会", users_confirm_withdraw_path, class: "btn btn-danger edit-btn" %>
               </div>
             </div>
 
