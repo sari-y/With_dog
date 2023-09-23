@@ -8,14 +8,14 @@ class Admin::FacilityCategoriesController < ApplicationController
   def create
     @facility_category = FacilityCategory.new(facility_category_params)
     @facility_category.save
-    flash[:facility_category] = "カテゴリーを作成しました。"
+    flash[:notice] = "カテゴリーを作成しました。"
     redirect_to admin_facility_categories_path
   end
 
   def destroy
     @facility_category = FacilityCategory.find(params[:id])
     @facility_category.destroy
-    flash[:facility_category] = "カテゴリーを削除しました。"
+    flash[:notice] = "カテゴリーを削除しました。"
     redirect_to admin_facility_categories_path
   end
 

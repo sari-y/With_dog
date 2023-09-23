@@ -46,6 +46,16 @@
         </div>
       </div>
     </header>
+    <% if notice %>
+      <div class="alert aleart-warning text-center m-0">
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert aleart-warning text-center m-0">
+        <%= alert %>
+      </div>
+    <% end %>
     <%= yield %>
     <footer class="bg-white border-top border-dark pt-5 pb-5 mt-4">
       <div class="container">

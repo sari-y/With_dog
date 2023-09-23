@@ -75,10 +75,13 @@
           </div>
           <div class="col-md-6 mb-3">
             <div class="field">
-              <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false %>
-            </div>
+              <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false do |b| %>
+            <%= b.label { b.check_box + b.text } %>
+        <% end %>
+        </div>
           </div>
         </div>
+
 
         <div class="row">
           <div class="col-md-4">

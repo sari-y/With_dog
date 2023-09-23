@@ -1,6 +1,4 @@
-<div class='col-md-6 offset-1'>
-      <%= flash[:notice] %>
-    </div>
+
 <br>
 <br>
 <div class="container px-5 px-sm-0">
@@ -19,11 +17,13 @@
 
 
        <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-5">
             <h3>詳細情報編集</h3>
           </div>
-            <div class="col-md-4 mb-4 mt-4 d-flex flex-row-reverse">
+            <div class="col-md-5 mb-4 mt-4 d-flex flex-row-reverse">
               <%= f.submit "更新", class: "btn btn-success edit-btn" %>
+              <div class="offset-1"></div>
+              <%= link_to "削除", review_path(@review), method: :delete, class: "btn btn-danger edit-btn", "data-confirm" => "本当に削除しますか？" %>
             </div>
         </div>
 
@@ -109,6 +109,83 @@
 
         <div class="row">
           <div class="col-md-4">
+            現在地からの距離
+          </div>
+          <div id="distance", class="col-md-6 mb-5">
+          </div>
+          </div>
+
+
+            <div class="row">
+          <div class="col-md-4">
+            地図
+          </div>
+          <div class="col-md-6 mb-5">
+            <script type="text/javascript">
+            　const R = Math.PI / 180;
+
+              function distance(lat1, lng1, lat2, lng2) {
+                lat1 *= R;
+                lng1 *= R;
+                lat2 *= R;
+                lng2 *= R;
+                return 6371 * Math.acos(Math.cos(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1) + Math.sin(lat1) * Math.sin(lat2));
+              }
+
+                 function initMap() {
+                   var test = {lat: <%= @review.latitude %>, lng: <%= @review.longitude %>};
+                   var map = new google.maps.Map(document.getElementById('map'), {
+                             zoom: 15,
+                             center: test
+                             });
+                   var transitLayer = new google.maps.TransitLayer();
+                   transitLayer.setMap(map);
+                   var contentString = '住所：<%= @review.address %>';
+                   var infowindow = new google.maps.InfoWindow({
+                     content: contentString
+                   });
+                   var marker = new google.maps.Marker({
+                                 position:test,
+                                 map: map,
+                                 title: contentString
+                               });
+                   marker.addListener('click', function() {
+                     infowindow.open(map, marker);
+                   });
+                 }
+
+                 const options = {
+                  enableHighAccuracy: true,
+                  timeout: 5000,
+                  maximumAge: 0,
+                };
+                 const getCurrentPosition = (options) => {
+                    return new Promise( (resolve, reject) => {
+                      navigator.geolocation.getCurrentPosition (resolve, reject, options)
+                    })
+                 }
+                 const position = getCurrentPosition (options).then(value => {
+                    const target = document.getElementById('distance');
+                    target.innerText = `${Math.round(distance(value.coords.latitude, value.coords.longitude, <%= @review.latitude %>, <%= @review.longitude %>))}km`;
+                 }).catch(err => {
+                   alert('error');
+                 })
+
+            </script>
+            <script async defer
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+            </script>
+            <style type="text/css">
+              #map { height: 200px;
+                    width: 70%;}
+            </style>
+            <div id="map"></div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-4">
             <%= f.label :image, "写真" %>
           </div>
           <div class="col-md-6 mb-5">
@@ -117,7 +194,7 @@
             </div>
             <div class="d-flex flex-wrap">
               <% @review.image.each do |image| %>
-                <%= image_tag image.variant(resize: '300x300') if @review.image.attached? %>
+                <%= image_tag image.variant(resize: '210x210') if @review.image.attached? %>
               <% end %>
             </div>
           </div>

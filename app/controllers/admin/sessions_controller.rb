@@ -6,6 +6,11 @@ class Admin::SessionsController < Devise::SessionsController
     flash[:notice] = "管理者としてログインしました。"
     admin_users_path
   end
+
+  def destroy
+    sign_out(current_user)
+    redirect_to root_path, notice: "ログアウトが正常に行われました。"
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

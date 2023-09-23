@@ -58,17 +58,27 @@ body {
 }
 
 
-.card {
-  height: 100%;
+.card-reviews {
+  height: 100% !important;
 }
 
 .card-footer {
   margin-top: auto;
 }
 
+.card-name a {
+  color: black; /* 好きなカラーコードを指定 */
+  text-decoration: none; /* 下線を消す */
+}
+
 .edit-btn {
   width: 130px;
 }
+
+.user-btn {
+  width: 200px;
+}
+
 
 .paginate {
   display: flex;
