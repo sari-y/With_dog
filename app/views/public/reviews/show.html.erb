@@ -14,16 +14,15 @@
     </div>
 
     <div class="col-md-7 offset-md-1">
-
       <div class="row">
-          <div class="col-md-6">
-      <h3 class="underlined-text">詳細情報</h3>
-      </div>
-      <% if @user.id == current_user.id %>
-      <div class="col-md-12 mb-4 d-flex flex-row-reverse">
-      <%= link_to "編集", edit_review_path, class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
-      </div>
-      <% end %>
+        <div class="col-12 mb-4">
+          <h3 class="underlined-text">詳細情報</h3>
+        </div>
+        <% if @user.id == current_user.id %>
+          <div class="col-12 mb-4 d-flex flex-row-reverse">
+            <%= link_to "編集", edit_review_path, class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
+          </div>
+        <% end %>
       </div>
 
       <table class="table" style="height: 300px;">
@@ -52,7 +51,7 @@
                  };
                 raty(elem,opt);
               </script>
-            </td>
+          </td>
         </tr>
         <tr>
           <td style="width: 30%; vertical-align: middle;">カテゴリー</td>
@@ -129,7 +128,7 @@
             </script>
             <style type="text/css">
               #map { height: 200px;
-                    width: 70%;}
+                    width: 100%;}
             </style>
             <div id="map"></div>
           </td>
@@ -142,47 +141,69 @@
               <%= link_to '全ての画像を削除', attachment_path(@review), method: :delete, class: 'btn-sm btn-danger' %>
               <% end %>
             </div>
-            <div class="d-flex flex-wrap">
-            <% @review.image.each do |image| %>
-              <%= image_tag image.variant(resize: '210x210') if @review.image.attached? %>
-            <% end %>
+            <div class="row">
+              <% if @review.image.attached? %>
+                <% @review.image.each do |image| %>
+                  <div class="col-sm-6">
+                  <%= link_to image.variant(resize: '500x500').processed, 'data-lightbox': "simple-group1" do %>
+                    <%= image_tag image.variant(resize: '230x230').processed, class: "img-fluid mb-3" %>
+                  <% end %>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
           </td>
           </tr>
+        </table>
 
-   <div id="comments-area">
-       <tr>
+      <div class="row">
+        <div class="col-12 mb-4">
+          <h3 class="underlined-text">コメント一覧</h3>
+        </div>
+       <!--<tr>
         <td style="width: 30%; vertical-align: middle;">コメント</td>
         <td style="width: 70%; vertical-align: middle;"></td>
         </tr>
-        </table>
-
-        <table class="table">
-          <tbody>
-          <% @review.review_comments.each do |review_comment| %>
-        <tr>
-          <td><%= image_tag review_comment.user.get_profile_image(100,100) %></td>
-          <td><%= link_to review_comment.user.name, users_my_page_path(review_comment.user) %></td>
-          <td><%= review_comment.text %></td>
-          <td><% if review_comment.user == current_user %>
-            <%= link_to "削除", review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger" %>
-          <% end %>
-          </td>
-          </tr>
-        <% end %>
-        </tbody>
-        </table>
-
-
+        </table>-->
+        <div class="col-12">
+          <table class="table">
+            <tbody>
+              <% @review.review_comments.each do |review_comment| %>
+                <tr>
+                  <td><%= image_tag review_comment.user.get_profile_image(100,100) %></td>
+                  <td>
+                    投稿者:　<%= link_to review_comment.user.name, users_my_page_path(review_comment.user) %><br>
+                    <%= simple_format review_comment.text %>
+                  </td>
+                  <td width="80">
+                    <% if review_comment.user == current_user %>
+                      <%= link_to "削除", review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
       <div class="row">
-         <div class="col-md-6">
-        <%= form_with model: [@review, @review_comment], url: review_review_comments_path(@review.id), method: :post do |f| %>
-          <%= f.text_area :text, rows: '5', cols: 70 %>
-          <%= f.submit "送信" %>
-        <% end %>
+        <div class="col-12">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>
+                  <%= form_with model: [@review, @review_comment], url: review_review_comments_path(@review.id), method: :post do |f| %>
+                    <%= f.label :text, "コメントを残す:" %>
+                    <%= f.text_area :text, rows: '5', cols: 70 %>
+                    <%= f.submit "送信", class: "btn btn-success" %>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

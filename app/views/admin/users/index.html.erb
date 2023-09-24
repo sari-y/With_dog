@@ -6,7 +6,7 @@
     <br>
     <div class="row">
       <div class="col-3">
-        <h4>会員一覧</h4>
+        <h4 class="underlined-text">会員一覧</h4>
       </div>
     </div>
     <br>
@@ -28,7 +28,7 @@
           <td style="height: 60px; vertical-align: middle;"><%= image_tag user.get_profile_image(100,100) %></td>
           <td style="height: 60px; vertical-align: middle;"><%= user.name %></td>
           <td style="height: 60px; vertical-align: middle;"><%= user.email %></td>
-          <td style="height: 60px; vertical-align: middle;"><%= link_to "詳細", admin_user_path(user), class: "btn btn-sm btn-info" %></td>
+          <td style="height: 60px; vertical-align: middle;"><%= link_to "詳細", admin_user_path(user), class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %></td>
         </tr>
       </tbody>
       <% end %>
