@@ -78,8 +78,7 @@ footer {
 }
 
 .card-name a {
-  color: black; /* 好きなカラーコードを指定 */
-  text-decoration: none; /* 下線を消す */
+  color: #6f4d3e; /* 好きなカラーコードを指定 */
 }
 
 .edit-btn {
@@ -97,19 +96,19 @@ footer {
 }
 
 /*ページネーション自体のデザイン*/
-.pagination>li>a {          
+.pagination>li>a {
   border: none;     /*枠線をなくす*/
   color: #696969;   /*文字の色を変える*/
 }
 
 /* 表示しているページ番号のデザイン */
-.pagination>.active>a {     
+.pagination>.active>a {
   background: #ff7f50!important;     /*背景の色を変える*/
   border-radius: 15px;     /*角を丸くする*/
 }
 
 /*ホバー時のデザイン*/
-.pagination>li>a:hover {        
+.pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
 }
 

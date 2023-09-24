@@ -24,7 +24,7 @@
             <div class="col-md-5 mb-4 mt-4 d-flex flex-row-reverse">
               <%= link_to "削除", review_path(@review), method: :delete, class: "btn btn-danger edit-btn", "data-confirm" => "本当に削除しますか？" %>
               <div class="offset-1"></div>
-              <%= f.submit "更新", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
+              <%= f.submit "更新", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
             </div>
         </div>
 
@@ -180,7 +180,7 @@
             </script>
             <style type="text/css">
               #map { height: 200px;
-                    width: 70%;}
+                    width: 100%;}
             </style>
             <div id="map"></div>
           </div>
@@ -197,7 +197,7 @@
             </div>
             <div class="d-flex flex-wrap">
               <% @review.image.each do |image| %>
-                <%= image_tag image.variant(resize: '210x210') if @review.image.attached? %>
+                <%= image_tag image.variant(resize: '180x180') if @review.image.attached? %>
               <% end %>
             </div>
           </div>
