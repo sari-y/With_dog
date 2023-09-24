@@ -13,7 +13,7 @@
       </div>
 
       <div class='col-md-8 offset-md-1'>
-  
+
         <h3 class="underlined-text">レビュー投稿</h3>
         <br>
         <br>
@@ -22,9 +22,9 @@
               <%= msg %>
             <% end %>
           <% end %>
-  
+
           <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
-  
+
           <div class="row">
             <div class="col-md-4">
               <%= f.label :facility_name, "施設名" %>
@@ -35,7 +35,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="row">
             <div class="col-md-4">
               <%= f.label :text, "レビュー" %>
@@ -46,8 +46,8 @@
               </div>
             </div>
           </div>
-  
-  
+
+
           <div class="row">
             <div class="col-md-4">
               <%= f.label :rating, "評価" %>
@@ -69,7 +69,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="row">
             <div class="col-md-4">
               <%= f.label :review_facility_category, "カテゴリー" %>
@@ -82,8 +82,8 @@
           </div>
             </div>
           </div>
-  
-  
+
+
           <div class="row">
             <div class="col-md-4">
               <%= f.label :post_code, "郵便番号" %>
@@ -94,7 +94,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="row">
             <div class="col-md-4">
               <%= f.label :address, "住所" %>
@@ -105,7 +105,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="row">
             <div class="col-md-4">
               <%= f.label :image, "写真" %>
@@ -116,7 +116,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="row">
             <div class="col-md-8"></div>
               <div class="col-md-4 mb-5">
@@ -125,11 +125,11 @@
               </div>
           </div>
           </div>
-  
-  
+
+
         <% end %>
-  
+
       </div>
     </div>
   </div>
-  
+

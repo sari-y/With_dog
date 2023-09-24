@@ -12,10 +12,15 @@ body {
   font-family: 'Hachi Maru Pop', cursive;
 }
 
+footer {
+  background-color: #faf0e6; /* 背景色を指定 */
+  color: #6f4d3e; /* テキストの色を指定 */
+}
+
 
 .main-container {
  background-image: url("../images/top.jpg");
- height: 650px;
+ height: 550px;
   background-size:cover;
   background-position: center bottom;
 }
@@ -26,15 +31,20 @@ body {
 }
 
 
-.top-text {
-  color: #330000;
-  position: absolute; /* 絶対位置指定 */
-  bottom: 0; /* 下端に配置 */
-  right: 0; /* 右端に配置 */
-  background-color: rgba(255, 255, 255, 0.5); /* 背景色を半透明にする (0.5は透明度を示す) */
-  padding: 30px; /* テキストと枠線の間の余白 */
-  margin: 80px;
-  border: 2px solid white; /* 白色の枠線を追加 */
+.top-2 {
+ background-image: url("../images/top-2.jpg");
+ height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat; /* 画像の繰り返し表示を無効にする */
+  background-position: left bottom; /* 画像を左寄せに配置 */
+}
+
+.top-3 {
+ background-image: url("../images/top-3.jpg");
+ height: 400px;
+  background-size: contain;
+  background-repeat: no-repeat; /* 画像の繰り返し表示を無効にする */
+  background-position: right bottom; /* 画像を右寄せに配置 */
 }
 
 .about-container {
@@ -86,6 +96,32 @@ body {
   justify-content: center;
 }
 
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #ff7f50!important;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+.page-item:first-child .page-link {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.page-item:last-child .page-link {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
 
 .form-wrapper {
   border: 1px solid #ccc; /* 枠線を追加 */
