@@ -20,7 +20,7 @@
         </div>
         <% if @user.id == current_user.id %>
           <div class="col-12 mb-4 d-flex flex-row-reverse">
-            <%= link_to "編集", edit_review_path, class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
+            <%= link_to "編集", edit_review_path, class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
           </div>
         <% end %>
       </div>
@@ -186,7 +186,7 @@
           </table>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col-12">
           <table class="table">
@@ -196,7 +196,7 @@
                   <%= form_with model: [@review, @review_comment], url: review_review_comments_path(@review.id), method: :post do |f| %>
                     <%= f.label :text, "コメントを残す:" %>
                     <%= f.text_area :text, rows: '5', cols: 70 %>
-                    <%= f.submit "送信", class: "btn btn-success" %>
+                    <%= f.submit "送信", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
                   <% end %>
                 </td>
               </tr>

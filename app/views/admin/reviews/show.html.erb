@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-10 mx-auto">
 
-      <h4 class="underlined-text">レビュー詳細</h4>
+      <h4>レビュー詳細</h4>
 
         <div class='container px-5 px-sm-0'>
           <div class='row'>
@@ -74,9 +74,7 @@
                     <div class="d-flex flex-wrap">
                       <% if @review.image.attached? %>
                         <% @review.image.each do |image| %>
-                          <%= link_to image, 'data-lightbox': "simple-group1" do %>
-                            <%= image_tag image.variant(resize: '230x230') %>
-                          <% end %>
+                          <%= image_tag image.variant(resize: '230x230') %>
                         <% end %>
                       <% end %>
                     </div>
@@ -86,7 +84,6 @@
                 <tr>
                   <td style="height: 75px; width: 40%">コメント</td>
                   <td>
-                    <%= flash[:comment] %>
                     <table class="table table-borderless">
                       <tbody>
                         <% @review.review_comments.each do |review_comment| %>

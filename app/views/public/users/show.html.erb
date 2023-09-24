@@ -4,7 +4,7 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
-      <h4 class="underlined-text">会員情報</h4>
+      <h4 class="underlined-text">マイページ</h4>
       <br>
       <br>
 
@@ -17,17 +17,19 @@
         <h3 class="underlined-text">レビュー</h3>
         <br>
         <br>
-          <table class='table table-hover table-inverse'>
+          <table class='table'>
               <tbody>
                 <% @reviews.each do |review| %>
                   <tr>
                     <td style="vertical-align: middle;">
                       <% count=1 %>
-                      <% review.image.each do |image| %>
-                        <% if count==1 %>
-                          <%= image_tag image.variant(resize: '150x150') if review.image.attached? %>
+                      <% if review.image.attached? %>
+                        <% review.image.each do |image| %>
+                          <% if count==1 %>
+                            <%= image_tag image.variant(resize: '150x150') %>
+                          <% end %>
+                            <% count+=1 %>
                         <% end %>
-                        <% count+=1 %>
                       <% end %>
                     </td>
                     <td style="vertical-align: middle;"><%= review.facility_name %></td>
@@ -47,9 +49,9 @@
                     <td style="vertical-align: middle;">
                       コメント数:<%= review.review_comments.count %>
                     </td>
-                    <td style="vertical-align: middle;"><%= link_to "詳細", review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;" %></td>
+                    <td style="vertical-align: middle;"><%= link_to "詳細", review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %></td>
                     <td style="vertical-align: middle;"><% if @user.id == current_user.id %>
-                          <%= link_to "編集", edit_review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;" %>
+                          <%= link_to "編集", edit_review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
                         <% end %>
                     </td>
                   </tr>
