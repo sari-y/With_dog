@@ -20,27 +20,27 @@
             <br>
               <div class="row">
                 <div class="col-md-11 mb-4 d-flex flex-row-reverse">
-                  <%= link_to "削除", admin_user_path, method: :delete, class: "btn btn-danger edit-btn" %>
+                  <%= link_to "削除", admin_user_path, method: :delete, class: "btn btn-danger edit-btn", "data-confirm" => "本当に削除しますか？" %>
                 </div>
               </div>
 
               <table class="table" style="height: 300px;">
                 <thead>
                   <tr>
-                    <td style="width: 40%; vertical-align: middle;">会員ID</td>
-                    <td style="width: 60%; vertical-align: middle;"><%= @user.id %></td>
+                    <td style="width: 40%; vertical-align: middle; color: #6f4d3e;">会員ID</td>
+                    <td style="width: 60%; vertical-align: middle; color: #6f4d3e;"><%= @user.id %></td>
                   </tr>
                   <tr>
-                    <td  style="width: 40%; vertical-align: middle;">氏名</td>
-                    <td  style="width: 60%; vertical-align: middle;"><%= @user.name %></td>
+                    <td  style="width: 40%; vertical-align: middle; color: #6f4d3e;">氏名</td>
+                    <td  style="width: 60%; vertical-align: middle; color: #6f4d3e;"><%= @user.name %></td>
                   </tr>
                   <tr>
-                    <td style="width: 40%; vertical-align: middle;">メールアドレス</td>
-                    <td style="width: 60%; vertical-align: middle;"><%= @user.email %></td>
+                    <td style="width: 40%; vertical-align: middle; color: #6f4d3e;">メールアドレス</td>
+                    <td style="width: 60%; vertical-align: middle; color: #6f4d3e;"><%= @user.email %></td>
                   </tr>
                   <tr>
-                    <td style="width: 40%; vertical-align: middle;">自己紹介文</td>
-                    <td style="width: 60%; vertical-align: middle;"><%= @user.introduction %></td>
+                    <td style="width: 40%; vertical-align: middle; color: #6f4d3e;">自己紹介文</td>
+                    <td style="width: 60%; vertical-align: middle; color: #6f4d3e;"><%= @user.introduction %></td>
                   </tr>
                 </thead>
               </table>
