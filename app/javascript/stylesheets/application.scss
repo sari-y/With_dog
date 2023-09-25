@@ -56,7 +56,7 @@ footer {
 }
 
 .about-text {
-  color: white;
+  color: #6f4d3e;
   position: absolute; /* 絶対位置指定 */
   bottom: 0; /* 下端に配置 */
   right: 0; /* 右端に配置 */
@@ -76,6 +76,11 @@ footer {
 .card-footer {
   margin-top: auto;
 }
+
+.card-title a {
+  color: #6f4d3e; /* 好きなカラーコードを指定 */
+}
+
 
 .card-name a {
   color: #6f4d3e; /* 好きなカラーコードを指定 */
@@ -98,7 +103,7 @@ footer {
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
+  color: #6f4d3e;   /*文字の色を変える*/
 }
 
 /* 表示しているページ番号のデザイン */
@@ -110,7 +115,9 @@ footer {
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
+  background: #faf0e6;
 }
+
 
 .page-item:first-child .page-link {
   border-top-left-radius: 15px;
@@ -177,4 +184,8 @@ footer {
   border: 1px solid #ff7f50;
 }
 
+
+.thead-light-1 {
+  background-color: #fdf5e6;
+}
 

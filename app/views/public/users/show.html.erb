@@ -4,7 +4,13 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
-      <h4 class="underlined-text">マイページ</h4>
+      <h4 class="underlined-text">
+        <% if @user == current_user %>
+          マイページ
+        <% else %>
+          会員情報
+        <% end %>
+      </h4>
       <br>
       <br>
 

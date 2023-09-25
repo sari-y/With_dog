@@ -43,7 +43,7 @@
 
           <div class="card-body">
             <h5 class="card-title">
-              ・<%= link_to review.facility_name, review_path(review), 'data-turbolinks': false %>
+              ◆ <%= link_to review.facility_name, review_path(review), 'data-turbolinks': false %>
             </h5>
             <div class="card-name text-right">
               <投稿者:<%= link_to_if user_signed_in?, review.user.name, users_my_page_path(review.user) %>>

@@ -18,7 +18,7 @@
         <div class="col-12 mb-4">
           <h3 class="underlined-text">詳細情報</h3>
         </div>
-        <% if @user.id == current_user.id %>
+        <% if current_user.present? && @user.id == current_user.id %>
           <div class="col-12 mb-4 d-flex flex-row-reverse">
             <%= link_to "編集", edit_review_path, class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
           </div>
@@ -137,7 +137,7 @@
           <td style="width: 30%">写真</td>
           <td style="width: 70%">
             <div class="text-right mb-3">
-              <% if @user.id == current_user.id %>
+              <% if current_user.present? && @user.id == current_user.id %>
               <%= link_to '全ての画像を削除', attachment_path(@review), method: :delete, class: 'btn-sm btn-danger' %>
               <% end %>
             </div>
@@ -173,7 +173,7 @@
                   <td><%= image_tag review_comment.user.get_profile_image(100,100) %></td>
                   <td>
                     投稿者:　<%= link_to review_comment.user.name, users_my_page_path(review_comment.user) %><br>
-                    <%= simple_format review_comment.text %>
+                      <%= simple_format review_comment.text %>
                   </td>
                   <td width="80">
                     <% if review_comment.user == current_user %>
