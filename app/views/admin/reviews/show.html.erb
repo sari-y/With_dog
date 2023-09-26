@@ -6,21 +6,21 @@
 
       <h4 class="underlined-text">レビュー詳細</h4>
 
-        <div class='container px-5 px-sm-0'>
-          <div class='row'>
-            <div class='col-md-11'>
-            <br>
-              <div class="row">
-                <div class="col-md-11 mb-4 d-flex flex-row-reverse">
-                  <%= link_to "削除", admin_review_path, method: :delete, class: "btn btn-danger edit-btn" %>
-                </div>
+      <div class='container px-5 px-sm-0'>
+        <div class='row'>
+          <div class='col-md-11'>
+          <br>
+            <div class="row">
+              <div class="col-md-11 mb-4 d-flex flex-row-reverse">
+                <%= link_to "削除", admin_review_path, method: :delete, class: "btn btn-danger edit-btn", "data-confirm" => "本当に削除しますか？"  %>
               </div>
+            </div>
 
-              <table class="table">
-                <thead>
-                 <tr>
+            <table class="table">
+              <tbody>
+                <tr>
                   <td style="height: 75px; width: 40%; vertical-align: middle; color: #6f4d3e;">投稿者</td>
-                  <td style="height: 75px; width: 60%; vertical-align: middle; color: #6f4d3e;"><%= link_to @review.user.name, admin_user_path(@review.user) %></td>
+                  <td class="admin-user-name", style="height: 75px; width: 60%; vertical-align: middle; color: #6f4d3e;"><%= link_to @review.user.name, admin_user_path(@review.user) %></td>
                 </tr>
 
                 <tr>
@@ -69,7 +69,7 @@
                 </tr>
 
                 <tr>
-                  <td style="height: 75px; width: 40%; color: #6f4d3e;">写真</td>
+                  <td style="height: 75px; width: 40%; color: #6f4d3e;">画像</td>
                   <td style="height: 75px; width: 60%">
                     <div class="d-flex flex-wrap">
                       <% if @review.image.attached? %>
@@ -92,16 +92,16 @@
                             投稿者:  <%= link_to review_comment.user.name, admin_user_path(review_comment.user) %><br>
                             <%= simple_format review_comment.text %>
                           </td>
-                           <td width="80">
-                             <%= link_to "削除", admin_review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger" %>
-                             </td>
+                          <td width="80">
+                            <%= link_to "削除", admin_review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？"  %>
+                          </td>
                         <% end %>
                         </tr>
                       </tbody>
                     </table>
                   </td>
                 </tr>
-              </thead>
+              </tbody>
             </table>
           </div>
         </div>

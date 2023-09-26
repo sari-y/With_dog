@@ -16,55 +16,52 @@
 
       <%= render 'info', user: @user %>
 
-      </div>
+    </div>
 
-      <div class='col-md-8 offset-md-1'>
+    <div class='col-md-8 offset-md-1'>
 
-        <h3 class="underlined-text">レビュー</h3>
-        <br>
-        <br>
-          <table class='table'>
-              <tbody>
-                <% @reviews.each do |review| %>
-                  <tr>
-                    <td style="vertical-align: middle;">
-                      <% count=1 %>
-                      <% if review.image.attached? %>
-                        <% review.image.each do |image| %>
-                          <% if count==1 %>
-                            <%= image_tag image.variant(resize: '150x150') %>
-                          <% end %>
-                            <% count+=1 %>
-                        <% end %>
-                      <% end %>
-                    </td>
-                    <td style="vertical-align: middle;"><%= review.facility_name %></td>
-                    <td style="vertical-align: middle;">
-                      <div id="favorite_buttons_<%= review.id %>">
-                      <% if review.favorited_by?(current_user) %>
-                        いいね<%= link_to review_review_favorites_path(review), method: :delete do %>
-                        ♥<%= review.review_favorites.count %>
-                        <% end %>
-                      <% else %>
-                        いいね<%= link_to review_review_favorites_path(review), method: :post do %>
-                        ♡<%= review.review_favorites.count %>
-                       <% end %>
-                      <% end %>
-                      </div>
-                    </td>
-                    <td style="vertical-align: middle;">
-                      コメント数:<%= review.review_comments.count %>
-                    </td>
-                    <td style="vertical-align: middle;"><%= link_to "詳細", review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %></td>
-                    <td style="vertical-align: middle;"><% if @user.id == current_user.id %>
-                          <%= link_to "編集", edit_review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
-                        <% end %>
-                    </td>
-                  </tr>
-
+      <h3 class="underlined-text">レビュー</h3>
+      <br>
+      <br>
+      <table class='table'>
+        <tbody>
+          <% @reviews.each do |review| %>
+            <tr>
+              <td style="vertical-align: middle;">
+                <% count=1 %>
+                <% if review.image.attached? %>
+                  <% review.image.each do |image| %>
+                    <% if count==1 %>
+                      <%= image_tag image.variant(resize: '150x150') %>
+                    <% end %>
+                    <% count+=1 %>
+                  <% end %>
                 <% end %>
-              </tbody>
-          </table>
-      </div>
+              </td>
+              <td style="vertical-align: middle;"><%= review.facility_name %></td>
+              <td style="vertical-align: middle;">
+                <div id="favorite_buttons_<%= review.id %>">
+                  <% if review.favorited_by?(current_user) %>
+                    いいね<%= link_to review_review_favorites_path(review), method: :delete do %>
+                      ♥<%= review.review_favorites.count %>
+                    <% end %>
+                  <% else %>
+                    いいね<%= link_to review_review_favorites_path(review), method: :post do %>
+                      ♡<%= review.review_favorites.count %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </td>
+              <td style="vertical-align: middle;">コメント数:<%= review.review_comments.count %></td>
+              <td style="vertical-align: middle;"><%= link_to "詳細", review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %></td>
+              <td style="vertical-align: middle;"><% if @user.id == current_user.id %>
+                <%= link_to "編集", edit_review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
