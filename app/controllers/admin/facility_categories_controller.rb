@@ -1,4 +1,5 @@
 class Admin::FacilityCategoriesController < ApplicationController
+   before_action :authenticate_admin!
 
   def index
     @facility_categories = FacilityCategory.all

@@ -6,17 +6,13 @@
       <h4  class="underlined-text">会員情報</h4>
       <br>
       <br>
-
       <%= render 'public/users/info', user: @user %>
-
-      </div>
-
-      <div class='col-md-8 offset-md-1'>
-
-        <h3  class="underlined-text">フォロワー</h3>
-        <br>
-        <br>
-<%= render 'index', users: @users %>
-</div>
-</div>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <h3  class="underlined-text">フォロワー</h3>
+      <br>
+      <br>
+      <%= render 'index', users: @users %>
+    </div>
+  </div>
 </div>

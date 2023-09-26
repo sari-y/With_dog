@@ -1,9 +1,7 @@
 <br>
-    <br>
+<br>
 <div class="main-container">
-
 </div>
-
 <div class="text-center">
   <br>
   <br>
@@ -11,11 +9,10 @@
   <br>
   <br>
   <br>
-
-<h1>＼？ With dog とは ？／</h1>
-<br>
-<h4>
-   「愛犬とのお出かけをより充実したものに。」<br>
+  <h1>＼？ With dog とは ？／</h1>
+  <br>
+  <h4>
+    「愛犬とのお出かけをより充実したものに。」<br>
     <br>
     そんな思いから作られた愛犬家のための<br>
     <br>
@@ -25,15 +22,14 @@
     <br>
     <br>
     <h5>📍レビューに現在地からの距離が表示されるので<br>
-    <br>
-    次のお出かけ先もすぐに見つけることができます！</h5>
-    <br>
-    <br>
-    <br>
+      <br>
+      次のお出かけ先もすぐに見つけることができます！
+    </h5>
     <br>
     <br>
-
-
+    <br>
+    <br>
+    <br>
   </h4>
 </div>
 <div class="top-2"></div>
@@ -42,22 +38,17 @@
 <br>
 <br>
 <br>
-
 <h4 class="text-center">今日は『公園』で遊ぶ？<br>
-<br>
-それとも、『カフェ』でのんびり？<br>
-<br>
-初めての『グランピング』に挑戦？<br>
-<br>
-目的に応じてカテゴリーから検索できます◎</h4>
-<br>
-<br>
-<br>
-
-
-
-
+  <br>
+  それとも、『カフェ』でのんびり？<br>
+  <br>
+  初めての『グランピング』に挑戦？<br>
+  <br>
+  目的に応じてカテゴリーから検索できます◎
 </h4>
+<br>
+<br>
+<br>
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-2'>
@@ -66,75 +57,20 @@
       <br>
       <br>
       <br>
-      <div class="form-wrapper">
-    <%= form_with url: reviews_path, method: :get do |f| %>
-      <h5><%= f.label :review_facility_category, "カテゴリー" %></h5>
-        <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false do |b| %>
-          <%= b.label { b.check_box + b.text } %><br>
-        <% end %>
-        <div style="text-align: center;">
-      <%= f.submit "検索", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
-      </div>
-    <% end %>
-</div>
+      <%= render 'public/reviews/category' %>
       <br>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <br>
+      <br>
+      <br>
+      <h3 class="underlined-text">新着レビュー</h3>
+      <br>
+      <br>
+      <div class="row">
+        <%= render 'public/reviews/card', reviews: @reviews %>
       </div>
-
-
-      <div class='col-md-8 offset-md-1'>
-        <br>
-        <br>
-<br>
-<h3 class="underlined-text">新着レビュー</h3>
-<br>
-  <br>
-  <div class="row">
-    <% @reviews.each do |review| %>
-      <div class="col-md-4 mb-4">
-        <div class="card card-reviews">
-          <% count=1 %>
-            <% if review.image.attached? %>
-              <% review.image.each do |image| %>
-                <% if count==1 %>
-                  <%= image_tag image.variant(resize: "300x200", gravity: "center", crop: "200x200+0+0" ).processed %>
-                <% end %>
-                <% count+=1 %>
-              <% end %>
-            <% end %>
-
-          <div class="card-body">
-            <h5 class="card-title">
-              ・<%= link_to review.facility_name, review_path(review), 'data-turbolinks': false %>
-            </h5>
-            <div class="card-name text-right">
-              <投稿者:<%= link_to_if user_signed_in?, review.user.name, users_my_page_path(review.user) %>>
-            </div>
-          </div>
-          <div class="card-footer text-right">
-            <div class="text-black-50">
-            <% if user_signed_in? %>
-              <div>
-                <% if review.favorited_by?(current_user) %>
-                  いいね<%= link_to review_review_favorites_path(review), method: :delete do %>
-                    ♥<%= review.review_favorites.count %>
-                  <% end %>
-                <% else %>
-                  いいね<%= link_to review_review_favorites_path(review), method: :post do %>
-                    ♡<%= review.review_favorites.count %>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
-            </div>
-            <small class="text-black-50">
-              コメント数:<%= review.review_comments.count %>
-            </small>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div>
-    </div>
-    </div>
-    </div>
-    <div class="top-3"></div>
+</div>
+<div class="top-3"></div>
