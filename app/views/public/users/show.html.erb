@@ -38,8 +38,8 @@
                   <% end %>
                 <% end %>
               </td>
-              <td style="vertical-align: middle;"><%= review.facility_name %></td>
-              <td style="vertical-align: middle;">
+              <td style="vertical-align: middle; color: #6f4d3e;"><%= review.facility_name %></td>
+              <td style="vertical-align: middle; color: #6f4d3e;">
                 <div id="favorite_buttons_<%= review.id %>">
                   <% if review.favorited_by?(current_user) %>
                     いいね<%= link_to review_review_favorites_path(review), method: :delete do %>
@@ -52,9 +52,9 @@
                   <% end %>
                 </div>
               </td>
-              <td style="vertical-align: middle;">コメント数:<%= review.review_comments.count %></td>
+              <td style="vertical-align: middle; color: #6f4d3e;">コメント数:<%= review.review_comments.count %></td>
               <td style="vertical-align: middle;"><%= link_to "詳細", review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %></td>
-              <td style="vertical-align: middle;"><% if @user.id == current_user.id %>
+              <td style="vertical-align: middle; color: #6f4d3e;"><% if @user.id == current_user.id %>
                 <%= link_to "編集", edit_review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
                 <% end %>
               </td>
