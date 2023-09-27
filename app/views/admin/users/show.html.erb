@@ -1,0 +1,48 @@
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h4 class="underlined-text">会員情報詳細</h4>
+      <div class='container px-5 px-sm-0'>
+        <div class='row'>
+          <div class='col-md-3'>
+          <br>
+          <br>
+            <%= image_tag @user.get_profile_image %>
+          </div>
+          <div class='col-md-8'>
+          <br>
+            <div class="row">
+              <div class="col-md-11 mb-4 d-flex flex-row-reverse">
+                <%= link_to "削除", admin_user_path, method: :delete, class: "btn btn-danger edit-btn", "data-confirm" => "本当に削除しますか？" %>
+              </div>
+            </div>
+            <table class="table" style="height: 300px;">
+              <body>
+                <tr>
+                  <td style="width: 40%; vertical-align: middle; color: #6f4d3e;">会員ID</td>
+                  <td style="width: 60%; vertical-align: middle; color: #6f4d3e;"><%= @user.id %></td>
+                </tr>
+                <tr>
+                  <td  style="width: 40%; vertical-align: middle; color: #6f4d3e;">氏名</td>
+                  <td  style="width: 60%; vertical-align: middle; color: #6f4d3e;"><%= @user.name %></td>
+                </tr>
+                <tr>
+                  <td style="width: 40%; vertical-align: middle; color: #6f4d3e;">メールアドレス</td>
+                  <td style="width: 60%; vertical-align: middle; color: #6f4d3e;"><%= @user.email %></td>
+                </tr>
+                <tr>
+                  <td style="width: 40%; vertical-align: middle; color: #6f4d3e;">自己紹介文</td>
+                  <td style="width: 60%; vertical-align: middle; color: #6f4d3e;"><%= @user.introduction %></td>
+                </tr>
+              </body>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>

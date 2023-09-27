@@ -1,0 +1,147 @@
+<br>
+<br>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+
+      <h4 class="underlined-text">投稿者</h4>
+      <br>
+      <br>
+
+      <%= render 'public/users/info', user: @user %>
+
+    </div>
+
+    <div class="col-md-7 offset-md-1">
+      <div class="row">
+        <div class="col-12 mb-4">
+          <h3 class="underlined-text">詳細情報</h3>
+        </div>
+        <% if current_user.present? && @user.id == current_user.id %>
+          <div class="col-12 mb-4 d-flex flex-row-reverse">
+            <%= link_to "編集", edit_review_path, class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
+          </div>
+        <% end %>
+      </div>
+
+      <table class="table" style="height: 300px;">
+        <tbody>
+          <tr>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">施設名</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;"><%= @review.facility_name %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">レビュー</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;"><%= @review.text %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">評価</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;">
+              <div id="post_raty"></div>
+              <script>
+                let elem = document.querySelector('#post_raty');
+                let opt = {
+                  //path: '/assets',
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  scoreName: 'review[rating]',
+                  score: <%= j(@review.rating ? @review.rating : 0) %>,
+                  readOnly: true
+                 };
+                raty(elem,opt);
+              </script>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">カテゴリー</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;"><%= @review.facility_categories.pluck(:category_name).join(",") %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">郵便番号</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;"><%= @review.post_code %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">住所</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;"><%= @review.address %></td>
+          </tr>
+          <tr>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">現在地からの距離</td>
+            <td id="distance", style="color: #6f4d3e;"></td>
+          </tr>
+          <tr>
+            <td style="width: 30%; color: #6f4d3e; color: #6f4d3e;">地図</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;">
+              <%= render 'map' %>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 30% color: #6f4d3e; color: #6f4d3e;">画像</td>
+            <td style="width: 70% color: #6f4d3e;">
+              <div class="text-right mb-3">
+                <% if current_user.present? && @user.id == current_user.id %>
+                  <%= link_to '全ての画像を削除', attachment_path(@review), method: :delete, class: 'btn-sm btn-danger' %>
+                <% end %>
+              </div>
+              <div class="row">
+                <% if @review.image.attached? %>
+                  <% @review.image.each do |image| %>
+                    <div class="col-sm-6">
+                      <%= link_to image.variant(resize: '500x500').processed, 'data-lightbox': "simple-group1" do %>
+                        <%= image_tag image.variant(resize: '230x230').processed, class: "img-fluid mb-3" %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row">
+        <div class="col-12 mb-4">
+          <h3 class="underlined-text">コメント一覧</h3>
+        </div>
+        <div class="col-12">
+          <table class="table">
+            <tbody>
+              <% @review.review_comments.each do |review_comment| %>
+                <tr>
+                  <td><%= image_tag review_comment.user.get_profile_image(100,100) %></td>
+                  <td style="color: #6f4d3e;">
+                    投稿者:　<%= link_to review_comment.user.name, users_my_page_path(review_comment.user) %><br>
+                    <%= simple_format review_comment.text %>
+                  </td>
+                  <td width="80">
+                    <% if review_comment.user == current_user %>
+                      <%= link_to "削除", review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>
+                  <%= form_with model: [@review, @review_comment], url: review_review_comments_path(@review.id), method: :post do |f| %>
+                    <%= f.label :text, "コメントを残す:", style: "color: #6f4d3e;" %>
+                    <%= f.text_area :text, rows: '5', cols: 70 %>
+                    <%= f.submit "送信", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-3">
+        <h4 class="underlined-text">レビュー一覧</h4>
+      </div>
+    </div>
+    <br>
+      <table class='table'>
+        <thead class="thead-light-1">
+          <tr>
+            <th style="height: 50px; color: #6f4d3e;">　　　画像</th>
+            <th style="height: 50px; color: #6f4d3e;">施設名</th>
+            <th style="height: 50px; color: #6f4d3e;">投稿者</th>
+            <th style="height: 50px; color: #6f4d3e;">コメント</th>
+            <th style="height: 50px; color: #6f4d3e;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reviews.each do |review| %>
+            <tr>
+              <td>
+                <% count=1 %>
+                <% if review.image.attached? %>
+                  <% review.image.each do |image| %>
+                    <% if count==1 %>
+                      <%= image_tag image.variant(resize: '150x150') %>
+                    <% end %>
+                    <% count+=1 %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td style="height: 60px; vertical-align: middle; color: #6f4d3e;"><%= review.facility_name %></td>
+              <td style="height: 60px; vertical-align: middle; color: #6f4d3e;"><%= review.user.name %></td>
+              <td style="height: 60px; vertical-align: middle; color: #6f4d3e;">　<%= review.review_comments.count %>件</td>
+              <td style="height: 60px; vertical-align: middle;"><%= link_to "詳細", admin_review_path(review), class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="paginate">
+  <%= paginate @reviews %>
+</div>

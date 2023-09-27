@@ -1,0 +1,76 @@
+<br>
+<br>
+<div class="main-container">
+</div>
+<div class="text-center">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h1>＼？ With dog とは ？／</h1>
+  <br>
+  <h4>
+    「愛犬とのお出かけをより充実したものに。」<br>
+    <br>
+    そんな思いから作られた愛犬家のための<br>
+    <br>
+    お出かけレビューサイトです。<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h5>📍レビューに現在地からの距離が表示されるので<br>
+      <br>
+      次のお出かけ先もすぐに見つけることができます！
+    </h5>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </h4>
+</div>
+<div class="top-2"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h4 class="text-center">今日は『公園』で遊ぶ？<br>
+  <br>
+  それとも、『カフェ』でのんびり？<br>
+  <br>
+  初めての『グランピング』に挑戦？<br>
+  <br>
+  目的に応じてカテゴリーから検索できます◎
+</h4>
+<br>
+<br>
+<br>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-2'>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <%= render 'public/reviews/category' %>
+      <br>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <br>
+      <br>
+      <br>
+      <h3 class="underlined-text">新着レビュー</h3>
+      <br>
+      <br>
+      <div class="row">
+        <%= render 'public/reviews/card', reviews: @reviews %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="top-3"></div>

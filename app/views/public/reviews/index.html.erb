@@ -1,0 +1,22 @@
+
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h3 class="underlined-text">レビュー一覧</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+    <br>
+      <%= render 'category' %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+    <br>
+      <div class="row">
+        <%= render 'card', reviews: @reviews %>
+      </div>
+    </div>
+  </div>
+</div>

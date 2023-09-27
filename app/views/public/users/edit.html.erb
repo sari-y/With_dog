@@ -1,0 +1,66 @@
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+
+      <div class="row">
+        <div class="col-md-5">
+          <h3 class="underlined-text">登録情報変更</h3>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :name, "名前" %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="field">
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :introduction, "自己紹介文" %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="field">
+              <%= f.text_field :introduction, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :profile_image, "プロフィール画像" %>
+          </div>
+          <div class="col-md-6 mb-5">
+            <div class="field">
+              <%= f.file_field :profile_image, accept: "image/*" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <%= f.submit "更新", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
+          </div>
+          <div class="col-md-4">
+            <%= link_to "退会", users_confirm_withdraw_path, class: "btn btn-danger edit-btn" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+

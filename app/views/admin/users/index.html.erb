@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="scroll_area col-md-10 pt-5">
+      <div class="pb-4">
+      <h4 class="underlined-text">会員一覧</h4>
+      </div>
+        <table class="table">
+          <thead class="thead-light-1" style="border-color: #6f4d3e;">
+            <tr>
+              <th style="height: 50px; color: #6f4d3e;">会員ID</th>
+              <th style="height: 50px; color: #6f4d3e;">プロフィール画像</th>
+              <th style="height: 50px; color: #6f4d3e;">名前</th>
+              <th style="height: 50px; color: #6f4d3e;">メールアドレス</th>
+              <th style="height: 50px; color: #6f4d3e;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+            <tr>
+              <td style="height: 60px; vertical-align: middle; color: #6f4d3e;"><%= user.id %></td>
+              <td style="height: 60px; vertical-align: middle; color: #6f4d3e;"><%= image_tag user.get_profile_image(100,100) %></td>
+              <td style="height: 60px; vertical-align: middle; color: #6f4d3e;"><%= user.name %></td>
+              <td style="height: 60px; vertical-align: middle; color: #6f4d3e;"><%= user.email %></td>
+              <td style="height: 60px; vertical-align: middle;"><%= link_to "詳細", admin_user_path(user), class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="paginate">
+  <%= paginate @users %>
+</div>

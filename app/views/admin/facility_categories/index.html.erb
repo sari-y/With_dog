@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-6">
+        <h4 class="underlined-text">カテゴリー一覧</h4>
+      </div>
+    </div>
+    <br>
+    <%= form_with model: @facility_category,url: admin_facility_categories_path, method: :post do |f| %>
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3">
+          <h6>カテゴリー名</h6>
+        </div>
+        <div class="col-6">
+          <%= f.text_field :category_name%>
+          <%= f.submit "新規登録", class: "edit-btn btn-outline-2" %>
+          <% end %>
+        </div>
+        <br>
+        <%= flash[:facility_category] %>
+        <br>
+        <table class="table">
+          <% @facility_categories.each do |facility_category| %>
+            <tbody>
+              <tr>
+                <td style="height: 80px; width: 10%; vertical-align: middle;"></td>
+                <td style="height: 80px; width: 50%; vertical-align: middle; color: #6f4d3e;"><%= facility_category.category_name %></td>
+                <td style="height: 80px; width: 40%; vertical-align: middle;"><%= link_to "削除", admin_facility_category_path(facility_category.id), method: :delete, class: "btn btn-sm btn-danger edit-btn", "data-confirm" => "本当に削除しますか？"  %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+

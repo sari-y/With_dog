@@ -1,0 +1,203 @@
+@use '~bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=M+PLUS+1+Code&display=swap');
+
+body {
+  font-family: 'M PLUS 1 Code', cursive;
+  color: #6f4d3e;
+  background-color: white;
+}
+
+.logo {
+  font-family: 'Hachi Maru Pop', cursive;
+}
+
+footer {
+  background-color: #faf0e6; /* 背景色を指定 */
+  color: #6f4d3e; /* テキストの色を指定 */
+}
+
+
+.main-container {
+ background-image: url("../images/top.jpg");
+ height: 550px;
+  background-size:cover;
+  background-position: center bottom;
+}
+
+.main-container {
+  position: relative; /* 相対位置指定 */
+  text-align: right; /* テキストを右寄せ */
+}
+
+
+.top-2 {
+ background-image: url("../images/top-2.jpg");
+ height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat; /* 画像の繰り返し表示を無効にする */
+  background-position: left bottom; /* 画像を左寄せに配置 */
+}
+
+.top-3 {
+ background-image: url("../images/top-3.jpg");
+ height: 400px;
+  background-size: contain;
+  background-repeat: no-repeat; /* 画像の繰り返し表示を無効にする */
+  background-position: right bottom; /* 画像を右寄せに配置 */
+}
+
+.about-container {
+ background-image: url("../images/about2.jpg");
+ height: 600px;
+  background-size:cover;
+  background-position: center;
+  position: relative; /* 親要素を相対位置指定にする */
+}
+
+.about-text {
+  color: #6f4d3e;
+  position: absolute; /* 絶対位置指定 */
+  bottom: 0; /* 下端に配置 */
+  right: 0; /* 右端に配置 */
+  background-color: rgba(255, 255, 255, 0.5); /* 背景色を半透明にする (0.5は透明度を示す) */
+  padding: 30px; /* テキストと枠線の間の余白 */
+  height: 100%; /* 高さを親要素に合わせる */
+  display: flex; /* フレックスコンテナにする */
+  justify-content: center; /* 水平方向の中央寄せ */
+  align-items: center; /* 垂直方向の中央寄せ */
+}
+
+
+.card-reviews {
+  height: 100% !important;
+}
+
+.card-footer {
+  margin-top: auto;
+}
+
+.card-title a {
+  color: #6f4d3e; /* 好きなカラーコードを指定 */
+}
+
+
+.card-name a {
+  color: #6f4d3e; /* 好きなカラーコードを指定 */
+}
+
+.edit-btn {
+  width: 130px;
+}
+
+.user-btn {
+  width: 200px;
+}
+
+
+.paginate {
+  display: flex;
+  justify-content: center;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #6f4d3e;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #ff7f50!important;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+  background: #faf0e6;
+}
+
+
+.page-item:first-child .page-link {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.page-item:last-child .page-link {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.form-wrapper {
+  border: 1px solid #ccc; /* 枠線を追加 */
+  padding: 20px; /* フォームと枠線の間の余白 */
+}
+
+[id^="facility_category_ids_"] {
+  margin-right: 0.5em;
+}
+
+.underlined-text {
+  display: inline;
+  background-position: left -100% center;
+  padding-bottom: 0.6em;
+  font-weight: bold;
+  background-size: 200% 0.6em;
+  background-repeat: repeat-x;
+  background-image: linear-gradient(to right, #ffdead 50%, #ffdead 50%);
+  transition: background-position 2s ease 0.1s;
+}
+
+.form-control {
+  background-color: #faf0e6;
+  border: 1px solid #6f4d3e; /* 枠の色と太さを設定 */
+}
+
+.btn-outline {
+  border-color: #6f4d3e; /* ボーダーの色を指定 */
+  color: #6f4d3e; /* テキストの色を指定 */
+}
+
+.btn-outline:hover {
+  background-color: #6f4d3e; /* ホバー時の背景色を指定 */
+  color: white; /* ホバー時のテキスト色を指定 */
+}
+
+.card {
+  background-color: #faf0e6;
+  border: 2px solid #6f4d3e;
+}
+
+
+.btn-outline-2 {
+  /* ボタンの通常時のスタイル */
+  background-color: transparent;
+  color: #ff7f50;
+  border: 1px solid #ff7f50;
+}
+
+.btn-outline-2:hover {
+  /* ボタンのホバー時のスタイル */
+  background-color: #ff7f50;
+  color: white;
+  border: 1px solid #ff7f50;
+}
+
+
+.thead-light-1 {
+  background-color: #fdf5e6;
+}
+
+.admin-user-name a {
+  color: #6f4d3e; /* 好きなカラーコードを指定 */
+}
+
+.scroll_area{
+  min-width: 920px;
+  overflow-x:scroll;
+}
+
+.scroll_area table{
+  width: 100%;
+}

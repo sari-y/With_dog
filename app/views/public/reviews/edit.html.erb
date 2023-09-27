@@ -1,0 +1,143 @@
+<br>
+<br>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <h4 class="underlined-text">投稿者</h4>
+      <br>
+      <br>
+      <%= render 'public/users/info', user: @user %>
+    </div>
+    <div class="col-md-8 offset-md-1", style="color: #6f4d3e;">
+      <%= form_with model: @review, url: review_path, method: :patch do |f| %>
+
+        <div class="row">
+          <div class="col-md-5">
+            <h3  class="underlined-text">詳細情報編集</h3>
+          </div>
+          <div class="col-md-5 mb-4 mt-4 d-flex flex-row-reverse">
+            <%= link_to "削除", review_path(@review), method: :delete, class: "btn btn-danger edit-btn", "data-confirm" => "本当に削除しますか？" %>
+            <div class="offset-1"></div>
+            <%= f.submit "更新", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :facility_name, "施設名" %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="field">
+              <%= f.text_field :facility_name, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :text, "レビュー" %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="field">
+              <%= f.text_field :text, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :rating, "評価" %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="field">
+              <div id="post_raty"></div>
+              <script>
+                let elem = document.querySelector('#post_raty');
+                let opt = {
+                  //path: '/assets',
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  scoreName: 'review[rating]',
+                  score: <%= @review.rating %>
+                 };
+                raty(elem,opt);
+              </script>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :review_facility_category, "カテゴリー" %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="field">
+              <%= f.collection_check_boxes :facility_category_ids, FacilityCategory.all, :id, :category_name, include_hidden: false do |b| %>
+                <%= b.label { b.check_box + b.text } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :post_code, "郵便番号" %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="field">
+              <%= f.text_field :post_code, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :address, "住所" %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="field">
+              <%= f.text_field :address, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            現在地からの距離
+          </div>
+          <div id="distance", class="col-md-6 mb-5">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            地図
+          </div>
+          <div class="col-md-6 mb-5">
+            <%= render 'map' %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :image, "画像" %>
+          </div>
+          <div class="col-md-6 mb-5">
+            <div class="field">
+              <%= f.file_field :image, multiple: true, accept: "image/*" %>
+            </div>
+            <div class="d-flex flex-wrap">
+              <% @review.image.each do |image| %>
+                <%= image_tag image.variant(resize: '180x180') if @review.image.attached? %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

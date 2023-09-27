@@ -1,0 +1,4 @@
+<li><%= link_to 'マイページ', users_my_page_path(current_user) ,class:'nav-link text-light mx-4 px-4 btn', style: 'background-color: #ff7f50;' %></li>
+<li><%= link_to '新規投稿' , new_review_path, class:'nav-link text-light mx-4 px-4 btn', style: 'background-color: #ff7f50;', 'data-turbolinks': false %></li>
+<li><%= link_to 'レビュー', reviews_path, class:'nav-link text-light mx-4 px-4 btn', style: 'background-color: #ff7f50;' %></li>
+<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'nav-link text-light mx-4 px-4 btn', style: 'background-color: #ff7f50;' %></li>
