@@ -9,6 +9,8 @@
           <% end %>
           <% count+=1 %>
         <% end %>
+        <% else %>
+        <%= image_tag asset_path("review_no_image.jpg"), class: "w-100" %>
       <% end %>
 
       <div class="card-body">
