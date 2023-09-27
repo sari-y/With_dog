@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-8 mx-auto">
       <div class="row">
-        <div class="col-3">
+        <div class="col-12">
           <h3 class="underlined-text">ログイン</h3>
         </div>
       </div>
@@ -39,7 +39,7 @@
 
         <div class="row">
           <div class="col-md-4"></div>
-          <div class="col-md-6 mb-5">
+          <div class="col-md-6 mb-2">
             <% if devise_mapping.rememberable? %>
               <div class="field">
                 <%= f.check_box :remember_me %>
@@ -48,11 +48,8 @@
             <% end %>
           </div>
         </div>
-
         <div class="row">
-          <div class="col-md-8">
-            <h6>＜管理者ログインは<%= link_to "こちら", new_admin_session_path %>から＞</h6>
-          </div>
+          <div class="col-md-8"></div>
           <div class="col-md-4 mb-5">
             <div class="actions">
               <%= f.submit "ログイン", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
