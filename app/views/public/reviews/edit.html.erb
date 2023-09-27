@@ -8,7 +8,7 @@
       <br>
       <%= render 'public/users/info', user: @user %>
     </div>
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-8 offset-md-1", style="color: #6f4d3e;">
       <%= form_with model: @review, url: review_path, method: :patch do |f| %>
 
         <div class="row">

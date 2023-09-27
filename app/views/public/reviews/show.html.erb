@@ -27,16 +27,16 @@
       <table class="table" style="height: 300px;">
         <tbody>
           <tr>
-            <td style="width: 30%; vertical-align: middle;">施設名</td>
-            <td style="width: 70%; vertical-align: middle;"><%= @review.facility_name %></td>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">施設名</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;"><%= @review.facility_name %></td>
           </tr>
           <tr>
-            <td style="width: 30%; vertical-align: middle;">レビュー</td>
-            <td style="width: 70%; vertical-align: middle;"><%= @review.text %></td>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">レビュー</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;"><%= @review.text %></td>
           </tr>
           <tr>
-            <td style="width: 30%; vertical-align: middle;">評価</td>
-            <td style="width: 70%; vertical-align: middle;">
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">評価</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;">
               <div id="post_raty"></div>
               <script>
                 let elem = document.querySelector('#post_raty');
@@ -54,30 +54,30 @@
             </td>
           </tr>
           <tr>
-            <td style="width: 30%; vertical-align: middle;">カテゴリー</td>
-            <td style="width: 70%; vertical-align: middle;"><%= @review.facility_categories.pluck(:category_name).join(",") %></td>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">カテゴリー</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;"><%= @review.facility_categories.pluck(:category_name).join(",") %></td>
           </tr>
           <tr>
-            <td style="width: 30%; vertical-align: middle;">郵便番号</td>
-            <td style="width: 70%; vertical-align: middle;"><%= @review.post_code %></td>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">郵便番号</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;"><%= @review.post_code %></td>
           </tr>
           <tr>
-            <td style="width: 30%; vertical-align: middle;">住所</td>
-            <td style="width: 70%; vertical-align: middle;"><%= @review.address %></td>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">住所</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;"><%= @review.address %></td>
           </tr>
           <tr>
-            <td style="width: 30%; vertical-align: middle;">現在地からの距離</td>
-            <td id="distance"></td>
+            <td style="width: 30%; vertical-align: middle; color: #6f4d3e;">現在地からの距離</td>
+            <td id="distance", style="color: #6f4d3e;"></td>
           </tr>
           <tr>
-            <td style="width: 30%;">地図</td>
-            <td style="width: 70%; vertical-align: middle;">
+            <td style="width: 30%; color: #6f4d3e; color: #6f4d3e;">地図</td>
+            <td style="width: 70%; vertical-align: middle; color: #6f4d3e;">
               <%= render 'map' %>
             </td>
           </tr>
           <tr>
-            <td style="width: 30%">画像</td>
-            <td style="width: 70%">
+            <td style="width: 30% color: #6f4d3e; color: #6f4d3e;">画像</td>
+            <td style="width: 70% color: #6f4d3e;">
               <div class="text-right mb-3">
                 <% if current_user.present? && @user.id == current_user.id %>
                   <%= link_to '全ての画像を削除', attachment_path(@review), method: :delete, class: 'btn-sm btn-danger' %>
@@ -109,13 +109,13 @@
               <% @review.review_comments.each do |review_comment| %>
                 <tr>
                   <td><%= image_tag review_comment.user.get_profile_image(100,100) %></td>
-                  <td>
+                  <td style="color: #6f4d3e;">
                     投稿者:　<%= link_to review_comment.user.name, users_my_page_path(review_comment.user) %><br>
                     <%= simple_format review_comment.text %>
                   </td>
                   <td width="80">
                     <% if review_comment.user == current_user %>
-                      <%= link_to "削除", review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+                      <%= link_to "削除", review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %>
                     <% end %>
                   </td>
                 </tr>
@@ -132,7 +132,7 @@
               <tr>
                 <td>
                   <%= form_with model: [@review, @review_comment], url: review_review_comments_path(@review.id), method: :post do |f| %>
-                    <%= f.label :text, "コメントを残す:" %>
+                    <%= f.label :text, "コメントを残す:", style: "color: #6f4d3e;" %>
                     <%= f.text_area :text, rows: '5', cols: 70 %>
                     <%= f.submit "送信", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
                   <% end %>

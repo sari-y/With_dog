@@ -14,7 +14,7 @@ class Public::ReviewsController < ApplicationController
         ReviewFacilityCategory.create(review_id: @review.id, facility_category_id: id)
       end
       flash[:notice] = "新規投稿が正常に行われました。"
-       redirect_to reviews_path
+       redirect_to review_path(@review)
     else
       render :new
     end
