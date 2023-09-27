@@ -5,11 +5,13 @@
       <% if review.image.attached? %>
         <% review.image.each do |image| %>
           <% if count==1 %>
-            <%= image_tag image.variant(resize: "300x200", gravity: "center", crop: "200x200+0+0" ).processed %>
+            <%= link_to review_path(review.id), class: "w-100" do %>
+              <%= image_tag image.variant(resize: "300x200", gravity: "center", crop: "200x200+0+0" ).processed, class: "w-100" %>
+            <% end %>
           <% end %>
           <% count+=1 %>
-        <% end %>
-        <% else %>
+        <% end #review.image.each_end%>
+      <% else %>
         <%= image_tag asset_path("review_no_image.jpg"), class: "w-100" %>
       <% end %>
 
