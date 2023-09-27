@@ -19,49 +19,52 @@
     </div>
 
     <div class='col-md-8 offset-md-1'>
-
-      <h3 class="underlined-text">レビュー</h3>
-      <br>
-      <br>
-      <table class='table'>
-        <tbody>
-          <% @reviews.each do |review| %>
-            <tr>
-              <td style="vertical-align: middle;">
-                <% count=1 %>
-                <% if review.image.attached? %>
-                  <% review.image.each do |image| %>
-                    <% if count==1 %>
-                      <%= image_tag image.variant(resize: '150x150') %>
+      <div class="row justify-content-center">
+        <div class="scroll_area pt-5">
+          <div class="pb-4">
+            <h3 class="underlined-text">レビュー</h3>
+          </div>
+          <table class='table'>
+            <tbody>
+              <% @reviews.each do |review| %>
+                <tr>
+                  <td style="vertical-align: middle;">
+                    <% count=1 %>
+                    <% if review.image.attached? %>
+                      <% review.image.each do |image| %>
+                        <% if count==1 %>
+                          <%= image_tag image.variant(resize: '150x150') %>
+                        <% end %>
+                        <% count+=1 %>
+                      <% end %>
                     <% end %>
-                    <% count+=1 %>
-                  <% end %>
-                <% end %>
-              </td>
-              <td style="vertical-align: middle; color: #6f4d3e;"><%= review.facility_name %></td>
-              <td style="vertical-align: middle; color: #6f4d3e;">
-                <div id="favorite_buttons_<%= review.id %>">
-                  <% if review.favorited_by?(current_user) %>
-                    いいね<%= link_to review_review_favorites_path(review), method: :delete do %>
-                      ♥<%= review.review_favorites.count %>
+                  </td>
+                  <td style="vertical-align: middle; color: #6f4d3e;"><%= review.facility_name %></td>
+                  <td style="vertical-align: middle; color: #6f4d3e;">
+                    <div id="favorite_buttons_<%= review.id %>">
+                      <% if review.favorited_by?(current_user) %>
+                        いいね<%= link_to review_review_favorites_path(review), method: :delete do %>
+                          ♥<%= review.review_favorites.count %>
+                        <% end %>
+                      <% else %>
+                        いいね<%= link_to review_review_favorites_path(review), method: :post do %>
+                          ♡<%= review.review_favorites.count %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </td>
+                  <td style="vertical-align: middle; color: #6f4d3e;">コメント数:<%= review.review_comments.count %></td>
+                  <td style="vertical-align: middle;"><%= link_to "詳細", review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %></td>
+                  <td style="vertical-align: middle; color: #6f4d3e;"><% if @user.id == current_user.id %>
+                    <%= link_to "編集", edit_review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
                     <% end %>
-                  <% else %>
-                    いいね<%= link_to review_review_favorites_path(review), method: :post do %>
-                      ♡<%= review.review_favorites.count %>
-                    <% end %>
-                  <% end %>
-                </div>
-              </td>
-              <td style="vertical-align: middle; color: #6f4d3e;">コメント数:<%= review.review_comments.count %></td>
-              <td style="vertical-align: middle;"><%= link_to "詳細", review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %></td>
-              <td style="vertical-align: middle; color: #6f4d3e;"><% if @user.id == current_user.id %>
-                <%= link_to "編集", edit_review_path(review), class: "btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
