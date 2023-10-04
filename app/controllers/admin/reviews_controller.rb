@@ -2,7 +2,7 @@ class Admin::ReviewsController < ApplicationController
    before_action :authenticate_admin!
 
   def index
-  @reviews = Review.page(params[:page])
+  @reviews = Review.page(params[:page]).order(created_at: :desc)
   end
 
   def show
