@@ -1,0 +1,22 @@
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="mb-4">
+      <h3 class="underlined-text">お気に入り</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class='col-md-8 offset-md-2'>
+      <div class="row">
+        <% if @bookmark_reviews.present? %>
+        <% @bookmark_reviews.each do |review| %>
+          <%= render 'public/reviews/card', review: review %>
+          <% end %>
+        <% else %>
+          <p><%= t('.no_result') %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

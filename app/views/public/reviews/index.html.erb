@@ -15,7 +15,9 @@
     <div class='col-md-8 offset-md-1'>
     <br>
       <div class="row">
-        <%= render 'card', reviews: @reviews %>
+        <% @reviews.each do |review| %>
+          <%= render 'card', review: review %>
+        <% end %>
       </div>
     </div>
   </div>

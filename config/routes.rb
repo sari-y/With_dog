@@ -29,7 +29,13 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   resources :reviews do
     resource :review_favorites, only: [:create, :destroy]
     resources :review_comments, only: [:create, :update, :destroy]
+    resources :comments, only: [:create, :destroy]
+      collection do
+        get 'bookmarks'
+      end
   end
+
+  resources :bookmarks, only: [:index, :create, :destroy]
 
    resources :users do
   resource :relationships, only: [:create, :destroy]

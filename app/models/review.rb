@@ -4,6 +4,7 @@ class Review < ApplicationRecord
   has_many :review_facility_categories, dependent: :destroy
   has_many :facility_categories, through: :review_facility_categories
   belongs_to :user
+  has_many :bookmarks, dependent: :destroy
 
   has_many_attached :image
 

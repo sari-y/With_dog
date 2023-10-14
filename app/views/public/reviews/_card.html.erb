@@ -1,5 +1,4 @@
-<% reviews.each do |review| %>
-  <div class="col-md-4 mb-4">
+<div class="col-md-4 mb-4">
     <div class="card card-reviews">
     <% count=1 %>
       <% if review.image.attached? %>
@@ -20,7 +19,9 @@
           ◆ <%= link_to review.facility_name, review_path(review), 'data-turbolinks': false %>
         </h5>
         <div class="card-name text-right">
-          <投稿者:<%= link_to_if user_signed_in?, review.user.name, users_my_page_path(review.user) %>>
+          <投稿者:<%= link_to_if user_signed_in?, review.user.name, users_my_page_path(review.user) %>><br>
+          <small class="muted-text"><%= l(review.created_at, format: :short) %></small>
+
         </div>
       </div>
       <div class="card-footer text-right">
@@ -32,9 +33,8 @@
           <% end %>
         </div>
         <small class="text-black-50">
-          コメント数:<%= review.review_comments.count %>
+          コメント<i class="far fa-comment-alt"></i> <%= review.review_comments.count %>
         </small>
       </div>
     </div>
   </div>
-<% end %>

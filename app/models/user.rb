@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  has_many :bookmarks
+  has_many :bookmark_reviews, through: :bookmarks, source: :review
+
   # フォローしたときの処理
   def follow(user_id)
   relationships.create(followed_id: user_id)
@@ -27,6 +30,21 @@ class User < ApplicationRecord
   # フォローしているか判定
   def following?(user)
   followings.include?(user)
+  end
+
+  # ブックマークに追加する
+  def bookmark(review)
+  	bookmark_reviews << review
+  end
+
+  # ブックマークを外す
+  def unbookmark(review)
+  	bookmark_reviews.destroy(review)
+  end
+
+  # ブックマークをしているか判定する
+  def bookmark?(review)
+  	bookmark_reviews.include?(review)
   end
 
 
