@@ -6,6 +6,11 @@
     <div class="col-md-10">
       <h3 class="underlined-text">レビュー一覧</h3>
     </div>
+    <p>
+       <%= link_to '新しい順', reviews_path(latest: "true") %>
+       |<%= link_to '古い順', reviews_path(old: "true") %>
+       |<%= link_to '評価の高い順', reviews_path(rating_count: "true") %>
+      </p>
   </div>
   <div class="row">
     <div class="col-md-2">
