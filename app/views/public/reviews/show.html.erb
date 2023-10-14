@@ -23,12 +23,12 @@
           </div>
         <% end %>
         <div class="col-12 mb-4 d-flex flex-row-reverse">
-        <% if current_user&.bookmark?(@review) %>
-              <%= render 'public/bookmarks/unbookmark', review: @review  %>
-            <% else %>
-              <%= render 'public/bookmarks/bookmark', review: @review  %>
-            <% end %>
-            </div>
+          <% if current_user&.bookmark?(@review) %>
+            <%= render 'public/bookmarks/unbookmark', review: @review  %>
+          <% else %>
+            <%= render 'public/bookmarks/bookmark', review: @review  %>
+          <% end %>
+        </div>
       </div>
       <table class="table" style="height: 300px;">
         <tbody>
@@ -157,3 +157,5 @@
     </div>
   </div>
 </div>
+</div>
+
