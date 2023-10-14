@@ -1,6 +1,7 @@
 <%= link_to bookmark_path(current_user.bookmarks.find_by(review_id: review.id)),
 id: "js-bookmark-button-for-review-#{review.id}",
 class: "bookmark-link",
-method: :delete do %>
+method: :delete,
+remote: true do %>
   お気に入り<i class="fas fa-star"></i>
 <% end %>
