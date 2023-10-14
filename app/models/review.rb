@@ -14,6 +14,10 @@ class Review < ApplicationRecord
   validates :post_code, presence: true
   validates :address, presence: true
   validates :image, presence: true
+  
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :rating_count, -> {order(rating: :desc)}
 
 
   #既にいいねしていないか検証

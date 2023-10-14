@@ -20,7 +20,7 @@
         </h5>
         <div class="card-name text-right">
           <投稿者:<%= link_to_if user_signed_in?, review.user.name, users_my_page_path(review.user) %>><br>
-          <small class="muted-text"><%= l(review.created_at, format: :short) %></small>
+          <small class="muted-text"><%= l(review.created_at) %></small>
 
         </div>
       </div>

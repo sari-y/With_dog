@@ -25,9 +25,15 @@ class Public::ReviewsController < ApplicationController
     if params[:facility_category_ids].present?
       @facility_categories = params[:facility_category_ids]
       @reviews = Review.includes(:review_facility_categories).where(review_facility_categories: {facility_category_id: @facility_categories}).order(created_at: :desc)
+    elsif params[:latest]
+      @reviews = Review.latest
+    elsif params[:old]
+      @reviews = Review.old
+    elsif params[:rating_count]
+      @reviews = Review.rating_count
     else
       @reviews = Review.all.order(created_at: :desc)
-    end
+  end
   end
 
   def show
