@@ -68,3 +68,5 @@ gem "net-pop"
 gem "net-imap"
 
 gem 'geocoder'
+
+gem 'jquery-rails'

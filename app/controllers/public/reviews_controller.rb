@@ -69,8 +69,6 @@ class Public::ReviewsController < ApplicationController
     redirect_to reviews_path
   end
 
-
-
   private
 
   def review_params

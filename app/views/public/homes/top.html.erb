@@ -68,7 +68,9 @@
       <br>
       <br>
       <div class="row">
-        <%= render 'public/reviews/card', reviews: @reviews %>
+        <% @reviews.each do |review| %>
+        <%= render 'public/reviews/card', review: review %>
+        <% end %>
       </div>
     </div>
   </div>

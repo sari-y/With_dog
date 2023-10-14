@@ -42,15 +42,7 @@
                   <td style="vertical-align: middle; color: #6f4d3e;"><%= review.facility_name %></td>
                   <td style="vertical-align: middle; color: #6f4d3e;">
                     <div id="favorite_buttons_<%= review.id %>">
-                      <% if review.favorited_by?(current_user) %>
-                        いいね<%= link_to review_review_favorites_path(review), method: :delete do %>
-                          ♥<%= review.review_favorites.count %>
-                        <% end %>
-                      <% else %>
-                        いいね<%= link_to review_review_favorites_path(review), method: :post do %>
-                          ♡<%= review.review_favorites.count %>
-                        <% end %>
-                      <% end %>
+                      <%= render 'public/reviews/favorite', review: review %>
                     </div>
                   </td>
                   <td style="vertical-align: middle; color: #6f4d3e;">コメント数:<%= review.review_comments.count %></td>
