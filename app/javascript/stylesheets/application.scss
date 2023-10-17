@@ -116,6 +116,7 @@ footer {
 .pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
   background: #faf0e6;
+  color: orange;
 }
 
 
@@ -209,6 +210,58 @@ footer {
 .bookmark-link {
   font-size: 20px;
   color: orange;
+  transition: color 0.3s;  /* アニメーション効果を追加（オプション）*/
+
+  /* カーソルが合わさった時のスタイル */
+  &:hover {
+    color: orange;  /* カーソルが合わさった時の色 */
+  }
+}
+
+
+.display-order {
+  color: #6f4d3e;
+  transition: color 0.3s;  /* アニメーション効果を追加（オプション）*/
+
+  /* カーソルが合わさった時のスタイル */
+  &:hover {
+    color: orange;  /* カーソルが合わさった時の色 */
+  }
+
+}
+
+.favorite-btn {
+  color: #6f4d3e;
+  transition: color 0.3s;  /* アニメーション効果を追加（オプション）*/
+
+  /* カーソルが合わさった時のスタイル */
+  &:hover {
+    color: orange;  /* カーソルが合わさった時の色 */
+  }
+}
+
+.bookmark-btn {
+  color: #6f4d3e;
+  transition: color 0.3s;  /* アニメーション効果を追加（オプション）*/
+
+  /* カーソルが合わさった時のスタイル */
+  &:hover {
+    color: orange;  /* カーソルが合わさった時の色 */
+  }
+}
+
+.follow-count {
+  color: #6f4d3e;
+  transition: color 0.3s;  /* アニメーション効果を追加（オプション）*/
+
+  /* カーソルが合わさった時のスタイル */
+  &:hover {
+    color: orange;  /* カーソルが合わさった時の色 */
+  }
+}
+
+.comment {
+  color: #6f4d3e;
   transition: color 0.3s;  /* アニメーション効果を追加（オプション）*/
 
   /* カーソルが合わさった時のスタイル */

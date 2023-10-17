@@ -21,20 +21,20 @@
         <div class="card-name text-right">
           <投稿者:<%= link_to_if user_signed_in?, review.user.name, users_my_page_path(review.user) %>><br>
           <small class="muted-text"><%= l(review.created_at) %></small>
-
         </div>
       </div>
-      <div class="card-footer text-right">
-        <div class="text-black-50">
+
+      <div class="card-footer d-flex justify-content-end">
+        <div>
           <% if user_signed_in? %>
             <div id="favorite_buttons_<%= review.id %>">
               <%= render 'public/reviews/favorite', review: review %>
             </div>
           <% end %>
         </div>
-        <small class="text-black-50">
-          コメント<i class="far fa-comment-alt"></i> <%= review.review_comments.count %>
-        </small>
+        <div class="offset-1">
+          <i class="far fa-comment-alt"></i><%= review.review_comments.count %>
+        </div>
       </div>
     </div>
   </div>
