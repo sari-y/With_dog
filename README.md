@@ -26,7 +26,7 @@
 * 愛犬を連れての旅行を計画している時
 
 ## 設計書
-https://app.diagrams.net/#G1aR2eP_GlCkq98nlyI-UxUl6pX4JospVX
+<img width="499" alt="スクリーンショット 2023-10-17 18 38 04" src="https://github.com/sari-y/With_dog/assets/138431427/921861ad-5cf7-4748-82f3-f2427dfe78ad">
 
 
 ## 開発環境
