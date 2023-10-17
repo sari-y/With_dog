@@ -21,14 +21,16 @@
           <div class="col-12 mb-4 d-flex flex-row-reverse">
             <%= link_to "編集", edit_review_path, class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;", 'data-turbolinks': false %>
           </div>
-          <div class="col-12 mb-4 d-flex flex-row-reverse">
+        <% end %>
+        <div class="col-12 mb-4 d-flex flex-row-reverse">
+          <% if user_signed_in? %>
             <% if current_user&.bookmark?(@review) %>
               <%= render 'public/bookmarks/unbookmark', review: @review  %>
             <% else %>
               <%= render 'public/bookmarks/bookmark', review: @review  %>
             <% end %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
       <table class="table" style="height: 300px;">
         <tbody>
