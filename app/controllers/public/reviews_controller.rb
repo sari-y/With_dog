@@ -24,16 +24,16 @@ class Public::ReviewsController < ApplicationController
   def index
     if params[:facility_category_ids].present?
       @facility_categories = params[:facility_category_ids]
-      @reviews = Review.includes(:review_facility_categories).where(review_facility_categories: {facility_category_id: @facility_categories}).order(created_at: :desc)
+      @reviews = Review.page(params[:page]).per(9).includes(:review_facility_categories).where(review_facility_categories: {facility_category_id: @facility_categories}).order(created_at: :desc)
     elsif params[:latest]
-      @reviews = Review.latest
+      @reviews = Review.page(params[:page]).per(9).latest
     elsif params[:old]
-      @reviews = Review.old
+      @reviews = Review.page(params[:page]).per(9).old
     elsif params[:rating_count]
-      @reviews = Review.rating_count
+      @reviews = Review.page(params[:page]).per(9).rating_count
     else
-      @reviews = Review.all.order(created_at: :desc)
-  end
+      @reviews = Review.page(params[:page]).per(9).order(created_at: :desc)
+    end
   end
 
   def show

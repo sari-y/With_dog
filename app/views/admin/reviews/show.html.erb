@@ -89,7 +89,7 @@
                         <% @review.review_comments.each do |review_comment| %>
                         <tr>
                           <td style="color: #6f4d3e;">
-                            投稿者:  <%= link_to review_comment.user.name, admin_user_path(review_comment.user) %><br>
+                            投稿者:  <%= link_to review_comment.user.name, admin_user_path(review_comment.user), class: "comment" %><br>
                             <%= simple_format review_comment.text %>
                           </td>
                           <td width="80">
