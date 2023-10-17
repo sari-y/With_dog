@@ -26,7 +26,7 @@
 * 愛犬を連れての旅行を計画している時
 
 ## 設計書
-後ほど作成予定
+https://app.diagrams.net/#G1aR2eP_GlCkq98nlyI-UxUl6pX4JospVX
 
 
 ## 開発環境
