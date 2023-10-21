@@ -14,7 +14,7 @@ class Review < ApplicationRecord
   validates :post_code, presence: true
   validates :address, presence: true
   validates :image, presence: true
-  
+
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :rating_count, -> {order(rating: :desc)}
@@ -24,10 +24,10 @@ class Review < ApplicationRecord
   def favorited_by?(user)
       review_favorites.exists?(user_id: user.id)
   end
-  
+
   #既にブックマークしていないか検証
   def bookmarked_by?(user)
-    bookmarks.where(user_id: user).exists? 
+    bookmarks.where(user_id: user).exists?
   end
 
   #addressの文字列から自動で緯度と経度のカラムに値を代入
