@@ -7,9 +7,10 @@
           <%= image_tag user.get_profile_image(100,100) %>
           <% end %>
         </td>
-        <td style="vertical-align: middle;", class="name"><%= link_to user.name, user_path(user.id) %></td>
-        <td style="vertical-align: middle;">フォロー数:<%= user.followings.count %></td>
-        <td style="vertical-align: middle;">フォロワー数:<%= user.followers.count %></td>
+        <td style="vertical-align: middle;"><i class="fas fa-user-alt"></i>   <%= link_to user.name, user_path(user.id), class: "link" %></td>
+        <td style="vertical-align: middle;">レビュー:<%= user.reviews.count %></td>
+        <td style="vertical-align: middle;">フォロー:<%= user.followings.count %></td>
+        <td style="vertical-align: middle;">フォロワー:<%= user.followers.count %></td>
         <td style="vertical-align: middle;">
           <% unless user == current_user %>
             <% if current_user.following?(user) %>
