@@ -12,7 +12,16 @@ class Public::BookmarksController < ApplicationController
   end
 
   def index
-    @bookmark_reviews = current_user.bookmark_reviews.includes(:user).order(created_at: :desc)
+    @bookmark_reviews = current_user.bookmark_reviews.page(params[:page]).per(9).includes(:user).order(created_at: :desc)
+    if params[:latest]
+      @bookmark_reviews = Review.page(params[:page]).per(9).latest
+    elsif params[:old]
+      @bookmark_reviews = Review.page(params[:page]).per(9).old
+    elsif params[:rating_count]
+      @bookmark_reviews = Review.page(params[:page]).per(9).rating_count
+    else
+      @bookmark_reviews = Review.page(params[:page]).per(9).order(created_at: :desc)
+    end
   end
 
 end
