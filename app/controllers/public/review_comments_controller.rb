@@ -17,9 +17,16 @@ class Public::ReviewCommentsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:review_id])
-    comment = @review.review_comments.find(params[:id])
+
+    # どのコメントでも削除できちゃうので、削除対象を絞り込みたい
+    if @review.user_id == current_user # 自分のレビューの場合
+      comment = @review.review_comments.find(params[:id])
+    else # 他の人のレビューの場合
+      comment = @review.review_comments.where(user_id: current_user.id).find_by(id: params[:id])
+    end
+    
     @review_comment = ReviewComment.new
-    if comment.destroy
+    if comment && comment.destroy
       flash[:notice] = "コメントが削除されました。"
     else
       flash[:notice] = "コメントの削除に失敗しました。"

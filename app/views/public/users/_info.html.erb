@@ -12,11 +12,9 @@
 	    <br>
       <%= user.introduction %>
       <br>
-      <br>
-      ＜ フ ォ ロー: <%= link_to user.followings.count, user_followings_path(user.id), class: "link" %> ＞
-      <br>
-      ＜ フォロワー: <%= link_to user.followers.count, user_followers_path(user.id), class: "link" %> ＞
-      <br>
+      <div id="user_count_<%= user.id %>">
+        <%= render 'public/relationships/user_count', user: user %>
+      </div>
       <br>
       <% if current_user.present? %>
         <div id="follow_buttons_<%= user.id %>">
