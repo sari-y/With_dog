@@ -7,10 +7,14 @@
       <br>
       <br>
 	    <div><i class="fas fa-user-alt"></i>  <%= user.name %></div>
-	    <div><i class="fas fa-paw"></i>  </div>
-      <div><i class="fas fa-dog"></i>  </div>
-	    <br>
+
+	    <div class="dog-information">
+	      <div><i class="fas fa-paw"></i>  <%= user.dog_name %></div>
+        <div>  <%= user.dog_breed %></div>
+        <div>  <%= user.dog_age %></div>
+      </div>
       <%= user.introduction %>
+      <br>
       <br>
       <div id="user_count_<%= user.id %>">
         <%= render 'public/relationships/user_count', user: user %>
