@@ -5,6 +5,7 @@ class Public::ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @user = current_user
   end
 
   def create
@@ -70,9 +71,14 @@ class Public::ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @review.destroy
-    flash[:notice] = "レビューを削除しました。"
-    redirect_to reviews_path
+    if current_user == @review.user
+      @review.destroy
+      flash[:notice] = "レビューを削除しました。"
+      redirect_to reviews_path
+    else
+      flash[:notice] = "削除に失敗しました。"
+      redirect_to request.referer
+    end
   end
 
   private

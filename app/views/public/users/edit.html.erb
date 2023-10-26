@@ -38,6 +38,39 @@
 
         <div class="row">
           <div class="col-md-4">
+            <%= f.label :dog_name, "愛犬名" %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="field">
+              <%= f.text_field :dog_name, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :dog_breed, "犬種" %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="field">
+              <%= f.text_field :dog_breed, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :dog_age, "年齢" %>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="field">
+              <%= f.text_field :dog_age, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
             <%= f.label :profile_image, "プロフィール画像" %>
           </div>
           <div class="col-md-6 mb-5">
