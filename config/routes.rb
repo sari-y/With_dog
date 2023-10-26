@@ -38,12 +38,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   resources :bookmarks, only: [:index, :create, :destroy]
 
    resources :users do
-  resource :relationships, only: [:create, :destroy]
-  get 'followings' => 'relationships#followings', as: 'followings'
-  get 'followers' => 'relationships#followers', as: 'followers'
-  end
-
-
+    resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+      post 'create_mini' => 'relationships#create_mini', as: 'create_mini'
+      delete 'destroy_mini' => 'relationships#destroy_mini', as: 'destroy_mini'
+    end
   end
 
 

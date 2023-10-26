@@ -5,6 +5,7 @@ class Public::ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @user = current_user
   end
 
   def create
