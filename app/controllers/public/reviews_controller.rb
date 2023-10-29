@@ -56,18 +56,20 @@ class Public::ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+    @user = @review.user
     if @review.update(review_params)
       @review.review_facility_categories.destroy_all
       params[:review][:facility_category_ids].each do |id|
-      ReviewFacilityCategory.create(review_id: @review.id, facility_category_id: id)
-      flash[:notice] = "レビューを更新しました。"
-    end
+        ReviewFacilityCategory.create(review_id: @review.id, facility_category_id: id)
+        flash[:notice] = "レビューを更新しました。"
+      end
       redirect_to review_path(@review)
     else
       flash[:notice] = "レビューの更新に失敗しました。"
       render :edit
     end
   end
+
 
   def destroy
     @review = Review.find(params[:id])
@@ -84,7 +86,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:facility_name, :text, :rating, :post_code, :address, :latitude, :longitude, image: [])
+    params.require(:review).permit(:facility_name, :text, :rating, :post_code, :address, :latitude, :longitude, facility_category_ids: [], image: [])
   end
 
 end
