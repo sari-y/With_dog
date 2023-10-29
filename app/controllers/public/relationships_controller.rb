@@ -10,7 +10,7 @@ class Public::RelationshipsController < ApplicationController
     current_user.unfollow(params[:user_id])
     @user = User.find(params[:user_id])
   end
-  
+
   def create_mini
     current_user.follow(params[:user_id])
     @user = User.find(params[:user_id])
@@ -20,7 +20,7 @@ class Public::RelationshipsController < ApplicationController
     current_user.unfollow(params[:user_id])
     @user = User.find(params[:user_id])
   end
-  
+
 
   def followings
     @user = User.find(params[:user_id])

@@ -8,11 +8,12 @@
       <br>
 	    <div><i class="fas fa-user-alt"></i>  <%= user.name %></div>
 
+      <% if user.dog_name.present? || user.dog_breed.present? || user.dog_age.present? %>
 	    <div class="dog-information">
 	      <div><i class="fas fa-paw"></i>  <%= user.dog_name %></div>
-        <div>  <%= user.dog_breed %></div>
-        <div>  <%= user.dog_age %></div>
+        <div><%= user.dog_breed %>/<%= user.dog_age %></div>
       </div>
+      <% end %>
       <%= user.introduction %>
       <br>
       <br>
