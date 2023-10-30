@@ -35,6 +35,15 @@
         <div class="offset-1">
           <i class="far fa-comment-alt"></i><%= review.review_comments.count %>
         </div>
+        <div>
+          <% if user_signed_in? %>
+            <% if current_user&.bookmark?(@review) %>
+              <%= render 'public/bookmarks/unbookmark_mini', review: @review  %>
+            <% else %>
+              <%= render 'public/bookmarks/bookmark_mini', review: @review  %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -28,6 +28,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   resources :reviews do
     resource :review_favorites, only: [:create, :destroy]
+      post 'create_mini' => 'review_favorites#create_mini', as: 'create_mini'
+      delete 'destroy_mini' => 'review_favorites#destroy_mini', as: 'destroy_mini'
     resources :review_comments, only: [:create, :update, :destroy]
     resources :comments, only: [:create, :destroy]
       collection do
@@ -36,6 +38,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
   resources :bookmarks, only: [:index, :create, :destroy]
+    post 'create_mini' => 'bookmarks#create_mini', as: 'create_mini'
+    delete 'destroy_mini' => 'bookmarks#destroy_mini', as: 'destroy_mini'
 
    resources :users do
     resource :relationships, only: [:create, :destroy]
