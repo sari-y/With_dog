@@ -1,1 +1,1 @@
-$("#js-bookmark-button-for-review-<%= @review.id %>").html("<%= j(render("unbookmark",  review: @review )) %>");
+$('#bookmark_button_<%= @review.id %>').html("<%= j(render "unbookmark", review: @review, list: @list ) %>");

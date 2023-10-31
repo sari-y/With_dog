@@ -1,7 +1,17 @@
-<%= link_to bookmarks_path(review_id: review.id),
-id: "js-bookmark-button-for-review-#{review.id}",
-class: "bookmark-link",
-method: :post,
-remote: true do %>
-  お気に入り<i class="far fa-star"></i>
+<% if list.present? %>
+  <%= link_to bookmarks_path(review_id: review.id, list: true),
+    id: "bookmark_button_#{review.id}",
+    class: "link",
+    method: :post,
+    remote: true do %>
+    <i class="far fa-star"></i>
+  <% end %>
+<% else %>
+  <%= link_to bookmarks_path(review_id: review.id, list: nil),
+    id: "bookmark_button_#{review.id}",
+    class: "bookmark-link",
+    method: :post,
+    remote: true do %>
+      お気に入り<i class="far fa-star"></i>
+  <% end %>
 <% end %>

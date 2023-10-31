@@ -1,7 +1,7 @@
-<%= link_to bookmarks_path(review_id: review.id),
-id: "js-bookmark-button-for-review-#{review.id}",
-class: "bookmark-link",
-method: :post,
+<%= link_to bookmarks_path(current_user.bookmarks.find_by(review_id: review.id)),
+id: "bookmark_button_mini_#{review.id}",
+class: "link",
+method: :delete,
 remote: true do %>
-  <i class="far fa-star"></i>
+  <i class="fas fa-star"></i>
 <% end %>

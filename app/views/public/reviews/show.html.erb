@@ -25,9 +25,9 @@
         <div class="col-12 mb-4 d-flex flex-row-reverse">
           <% if user_signed_in? %>
             <% if current_user&.bookmark?(@review) %>
-              <%= render 'public/bookmarks/unbookmark', review: @review  %>
+              <%= render 'public/bookmarks/unbookmark', review: @review, list: nil %>
             <% else %>
-              <%= render 'public/bookmarks/bookmark', review: @review  %>
+              <%= render 'public/bookmarks/bookmark', review: @review, list: nil %>
             <% end %>
           <% end %>
         </div>
