@@ -25,25 +25,23 @@
       </div>
 
       <div class="card-footer d-flex justify-content-end">
-        <div>
-          <% if user_signed_in? %>
+        <% if user_signed_in? %>
+          <div>
             <div id="favorite_buttons_<%= review.id %>">
               <%= render 'public/reviews/favorite', review: review %>
             </div>
-          <% end %>
+          </div>
+        <div class="offset-1">
+          <i class="far fa-comment-alt"></i>:<%= review.review_comments.count %>
         </div>
         <div class="offset-1">
-          <i class="far fa-comment-alt"></i><%= review.review_comments.count %>
-        </div>
-        <div>
-          <% if user_signed_in? %>
-            <% if current_user&.bookmark?(@review) %>
-              <%= render 'public/bookmarks/unbookmark_mini', review: @review  %>
-            <% else %>
-              <%= render 'public/bookmarks/bookmark_mini', review: @review  %>
-            <% end %>
+          <% if current_user&.bookmark?(review) %>
+            <%= render 'public/bookmarks/unbookmark', review: review, list: true %>
+          <% else %>
+            <%= render 'public/bookmarks/bookmark', review: review, list: true %>
           <% end %>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
