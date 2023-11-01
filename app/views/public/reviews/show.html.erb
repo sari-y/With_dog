@@ -112,47 +112,49 @@
           <div class="pb-4">
             <h3 class="underlined-text">コメント一覧</h3>
           </div>
-          <div class="col-12">
-            <table class="table">
-              <tbody>
-                <% @review.review_comments.each do |review_comment| %>
-                  <tr>
-                    <td>
-                      <%= link_to users_my_page_path(review_comment.user), class: "w-100" do %>
-                      <%= image_tag review_comment.user.get_profile_image(100,100) %>
-                      <% end %>
-                    </td>
-                    <td style="color: #6f4d3e;", class="name">
-                      投稿者:<%= link_to review_comment.user.name, users_my_page_path(review_comment.user), class: "link" %><br>
-                      <%= simple_format review_comment.text %>
-                    </td>
-                    <td width="80">
-                      <%# if review_comment.user == current_user %>
-                      <% if review_comment.user == current_user || @review.user == current_user %>
-                        <%= link_to "削除", review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %>
-                      <% end %>
-                    </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="row">
+          <div id="review_comment_index">
             <div class="col-12">
               <table class="table">
-            <tbody>
-              <tr>
-                <td>
-                  <%= form_with model: [@review, @review_comment], url: review_review_comments_path(@review.id), method: :post do |f| %>
-                    <%= f.label :text, "コメントを残す:", style: "color: #6f4d3e;" %>
-                    <%= f.text_area :text, rows: '5', cols: 70 %>
-                    <%= f.submit "送信", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
+                <tbody>
+                  <% @review.review_comments.each do |review_comment| %>
+                    <tr>
+                      <td>
+                        <%= link_to users_my_page_path(review_comment.user), class: "w-100" do %>
+                        <%= image_tag review_comment.user.get_profile_image(100,100) %>
+                        <% end %>
+                      </td>
+                      <td style="color: #6f4d3e;", class="name">
+                        投稿者:<%= link_to review_comment.user.name, users_my_page_path(review_comment.user), class: "link" %><br>
+                        <%= simple_format review_comment.text %>
+                      </td>
+                      <td width="80">
+                        <%# if review_comment.user == current_user %>
+                        <% if review_comment.user == current_user || @review.user == current_user %>
+                          <%= link_to "削除", review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %>
+                        <% end %>
+                      </td>
+                    </tr>
                   <% end %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </tbody>
+              </table>
+            </div>
+  
+            <div class="row">
+              <div class="col-12">
+                <table class="table">
+              <tbody>
+                <tr>
+                  <td>
+                    <%= form_with model: [@review, @review_comment], url: review_review_comments_path(@review.id), method: :post do |f| %>
+                      <%= f.label :text, "コメントを残す:", style: "color: #6f4d3e;" %>
+                      <%= f.text_area :text, rows: '5', cols: 70 %>
+                      <%= f.submit "送信", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+              </div>
             </div>
           </div>
         </div>

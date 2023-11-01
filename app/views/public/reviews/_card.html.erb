@@ -32,7 +32,9 @@
             </div>
           </div>
         <div class="offset-1">
-          <i class="far fa-comment-alt"></i>:<%= review.review_comments.count %>
+          <%= link_to review_path(review, anchor: 'review_comment_index'), class: "link" do %>
+            <i class="far fa-comment-alt"></i>:<%= review.review_comments.count %>
+          <% end %>
         </div>
         <div class="offset-1">
           <% if current_user&.bookmark?(review) %>
