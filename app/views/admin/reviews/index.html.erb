@@ -26,6 +26,8 @@
                     <% end %>
                     <% count+=1 %>
                   <% end %>
+                  <% else %>
+        <%= image_tag asset_path("review_no_image.jpg"), size: "150x110" %>
                 <% end %>
               </td>
               <td style="height: 60px; vertical-align: middle; color: #6f4d3e;"><%= review.facility_name %></td>
