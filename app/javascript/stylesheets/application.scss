@@ -73,10 +73,6 @@ footer {
   height: 100% !important;
 }
 
-.card-body {
-  height: 140px;
-}
-
 .card-footer {
   margin-top: auto;
 }
@@ -86,8 +82,9 @@ footer {
 }
 
 
-.card-name a {
+.card-name {
   color: #6f4d3e; /* 好きなカラーコードを指定 */
+  font-size: 13px;
 }
 
 .edit-btn {
