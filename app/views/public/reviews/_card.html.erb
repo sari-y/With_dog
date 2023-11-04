@@ -19,7 +19,7 @@
 
       <div class="card-body">
         <h5 class="card-title">
-          ◆ <%= link_to review.facility_name, review_path(review), 'data-turbolinks': false, class: "link" %>
+          ◆<%= link_to review.facility_name, review_path(review), 'data-turbolinks': false, class: "link" %>
         </h5>
         <div class="card-name text-right">
           <投稿者:<%= link_to_if user_signed_in?, review.user.name, users_my_page_path(review.user), class: "link" %>><br>
@@ -34,18 +34,20 @@
               <%= render 'public/reviews/favorite', review: review %>
             </div>
           </div>
+        <% end %>
         <div class="offset-1">
           <%= link_to review_path(review, anchor: 'review_comment_index'), class: "link" do %>
             <i class="far fa-comment-alt"></i>:<%= review.review_comments.count %>
           <% end %>
         </div>
-        <div class="offset-1">
-          <% if current_user&.bookmark?(review) %>
-            <%= render 'public/bookmarks/unbookmark', review: review, list: true %>
-          <% else %>
-            <%= render 'public/bookmarks/bookmark', review: review, list: true %>
-          <% end %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="offset-1">
+            <% if current_user&.bookmark?(review) %>
+              <%= render 'public/bookmarks/unbookmark', review: review, list: true %>
+            <% else %>
+              <%= render 'public/bookmarks/bookmark', review: review, list: true %>
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>
