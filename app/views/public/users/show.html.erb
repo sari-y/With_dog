@@ -51,7 +51,11 @@
                       <%= render 'public/reviews/favorite', review: review %>
                     </div>
                   </td>
-                  <td style="vertical-align: middle; width: 15%; color: #6f4d3e;"><i class="far fa-comment-alt"></i>:<%= review.review_comments.count %></td>
+                  <td style="vertical-align: middle; width: 15%; color: #6f4d3e;">
+                    <%= link_to review_path(review, anchor: 'review_comment_index'), class: "link" do %>
+                      <i class="far fa-comment-alt"></i>:<%= review.review_comments.count %>
+                    <% end %>
+                  </td>
                   <td style="vertical-align: middle; width: 40%; color: #6f4d3e;">
                     <div id="post_raty_<%= review.id %>"></div>
                     <script>
