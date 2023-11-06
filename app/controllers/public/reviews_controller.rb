@@ -15,11 +15,10 @@ class Public::ReviewsController < ApplicationController
         ReviewFacilityCategory.create(review_id: @review.id, facility_category_id: id)
       end
       flash[:notice] = "新規投稿が正常に行われました。"
-       redirect_to review_path(@review)
+      redirect_to review_path(@review)
     else
       render :new
     end
-
   end
 
   def index
@@ -69,7 +68,6 @@ class Public::ReviewsController < ApplicationController
       render :edit
     end
   end
-
 
   def destroy
     @review = Review.find(params[:id])

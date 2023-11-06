@@ -128,7 +128,6 @@
                         <%= simple_format review_comment.text %>
                       </td>
                       <td width="80">
-                        <%# if review_comment.user == current_user %>
                         <% if review_comment.user == current_user || @review.user == current_user %>
                           <%= link_to "削除", review_review_comment_path(@review, review_comment), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %>
                         <% end %>
@@ -142,18 +141,18 @@
             <div class="row">
               <div class="col-12">
                 <table class="table">
-              <tbody>
-                <tr>
-                  <td>
-                    <%= form_with model: [@review, @review_comment], url: review_review_comments_path(@review.id), method: :post do |f| %>
-                      <%= f.label :text, "コメントを残す:", style: "color: #6f4d3e;" %>
-                      <%= f.text_area :text, rows: '5', cols: 70 %>
-                      <%= f.submit "送信", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
-                    <% end %>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <%= form_with model: [@review, @review_comment], url: review_review_comments_path(@review.id), method: :post do |f| %>
+                          <%= f.label :text, "コメントを残す:", style: "color: #6f4d3e;" %>
+                          <%= f.text_area :text, rows: '5', cols: 70 %>
+                          <%= f.submit "送信", class: "btn edit-btn", style: "background-color: #ff7f50; color: #FFF;" %>
+                        <% end %>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -162,5 +161,5 @@
     </div>
   </div>
 </div>
-</div>
+
 

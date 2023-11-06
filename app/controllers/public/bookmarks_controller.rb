@@ -21,7 +21,6 @@ class Public::BookmarksController < ApplicationController
     elsif params[:rating_count]
       @bookmark_reviews = current_user.bookmark_reviews.page(params[:page]).per(9).rating_count
     else
-      #@bookmark_reviews = Review.page(params[:page]).per(9).order(created_at: :desc)
       @bookmark_reviews = current_user.bookmark_reviews.page(params[:page]).per(9).includes(:user).order(created_at: :desc)
     end
   end

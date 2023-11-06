@@ -9,10 +9,10 @@
 	    <div><i class="fas fa-user-alt"></i>  <%= user.name %></div>
 
       <% if user.dog_name.present? || user.dog_breed.present? || user.dog_age.present? %>
-	    <div class="dog-information">
-	      <div><i class="fas fa-paw"></i>  <%= user.dog_name %></div>
-        <div><%= user.dog_breed %>/<%= user.dog_age %></div>
-      </div>
+  	    <div class="dog-information">
+  	      <div><i class="fas fa-paw"></i>  <%= user.dog_name %></div>
+          <div><%= user.dog_breed %>/<%= user.dog_age %></div>
+        </div>
       <% end %>
       <%= user.introduction %>
       <br>
@@ -25,7 +25,6 @@
         <div id="follow_buttons_<%= user.id %>">
           <%= render 'public/relationships/follow', users: @users %>
         </div>
-
         <% unless user.guest_user? %>
           <% if user.id == current_user.id %>
             <%= link_to users_information_edit_path, class: "btn btn-outline user-btn text-center" do %>

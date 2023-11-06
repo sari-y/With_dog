@@ -34,13 +34,11 @@ class Public::ReviewCommentsController < ApplicationController
     redirect_to review_path(@review)
   end
 
-
   private
 
   def review_comment_params
     params.require(:review_comment).permit(:text)
   end
-
 
 end
 
