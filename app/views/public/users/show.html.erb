@@ -36,7 +36,7 @@
                       <% review.image.each do |image| %>
                         <% if count==1 %>
                           <%= link_to review_path(review.id), class: "w-100" do %>
-                            <%= image_tag image.variant(resize: '150x150') %>
+                            <%= image_tag image.variant(resize_to_fill: [120, 120]) %>
                           <% end %>
                         <% end %>
                         <% count+=1 %>
