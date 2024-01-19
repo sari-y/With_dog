@@ -5,8 +5,8 @@
         <% review.image.each do |image| %>
           <% if count==1 %>
             <%= link_to review_path(review.id), class: "w-100" do %>
-              <%= image_tag image.variant(resize_to_fill: [220, 220]) %>
-              <%#= image_tag image.variant(resize: "300x200", gravity: "center", crop: "200x200+0+0" ).processed, class: "w-100", style: "height: 220px;" %>
+              <%#= image_tag image.variant(resize_to_fill: [220, 220]) %>
+              <%= image_tag image.variant(resize: "300x200", gravity: "center", crop: "200x200+0+0" ).processed, class: "w-100 img-responsive-custom" %>
             <% end %>
           <% end %>
           <% count+=1 %>
