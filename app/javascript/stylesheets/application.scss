@@ -87,6 +87,16 @@ footer {
   font-size: 13px;
 }
 
+.img-responsive-custom {
+  height: 350px; /* 通常時の高さを設定 */
+
+  @media (min-width: 768px) {
+    height: 220px; /* レスポンシブ時の高さを設定（例: 768px以上の画面幅） */
+  }
+
+  object-fit: cover; /* 画像を保ちつつ切り抜く */
+}
+
 .edit-btn {
   width: 130px;
 }
